@@ -1,0 +1,3 @@
+.modal-close{cursor:pointer;float:right}#newsletter-modal{position:fixed;top:-1000px;left:0;bottom:0;right:0;max-width:800px;max-height:500px;transition:.5s all;margin-left:auto;margin-right:auto;z-index:100}#newsletter-modal.active{top:10vh}.newsletter-modal__content{padding:2rem}.newsletter-modal__content a{color:var(--light)}.newsletter-block{display:block !important}#mc-embedded-subscribe{margin:0;cursor:pointer}
+
+/*# sourceMappingURL=design-canteen.css.map */

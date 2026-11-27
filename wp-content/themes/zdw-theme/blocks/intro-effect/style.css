@@ -1,0 +1,249 @@
+/* Front-end styles for Intro Effect block */
+.intro-effect {
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+}
+
+/* Background video covers the block and sits behind layers/content */
+.ie-bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.intro-effect .zdw-intro-effect-inner {
+    z-index: 10;
+    mix-blend-mode: exclusion;
+    position: relative;
+}
+
+.intro-effect .zdw-intro-effect-side {
+    position: relative;
+    max-width: 640px;
+    z-index: 10;
+}
+
+.intro-effect .zdw-intro-effect-side .wp-block-group__inner-container {
+    max-width: 100%;
+}
+
+@media (min-width: 1000px) {
+    .intro-effect .zdw-intro-effect-side {
+        position: absolute;
+        left: 50%;
+        bottom: 6rem;
+    }
+}
+
+/* Shared */
+.ie-layer {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    pointer-events: none;
+
+    will-change: transform;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    isolation: isolate;
+    z-index: 1;
+}
+
+
+/* Layer 1 — deep purple base */
+.ie-l1 {
+    z-index: 1;
+    /* Make the layer inverted and grayscale */
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    will-change: filter;
+}
+
+/* Layer 2 — hot pink glow (animated radial gradient, ellipse by default)
+   We animate background-position and background-size to shift the gradient center and ratios over time. */
+.ie-l2 {
+    z-index: 2;
+    /* use a linear gradient (normal gradient) instead of radial
+    background: linear-gradient(120deg, rgba(255,0,120,0.95) 0%, rgba(255,0,120,0.6) 25%, rgba(255,0,120,0.25) 50%, rgba(255,0,120,0) 80%);*/
+    /*background: linear-gradient(91.58deg, rgba(231, 34, 114, 0.5) 20.42%, rgba(78, 39, 151, 0.5) 49.99%, rgba(13, 15, 62, 0.5) 91.99%);*/
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+    background-size: 300% 300%;
+    will-change: background-position, background-size;
+    /*animation: ie-l2-flow-linear 8s linear infinite;*/
+}
+
+.intro-effect #camera-trigger {
+    display: none;
+}
+
+.intro-effect #camera-trigger img {
+    transform: scale(1.2);
+    position: relative;
+    top: 1px;
+}
+
+.intro-effect #camera-trigger .wp-block-button__link, .camera-overlay .wp-block-button__link {
+    padding-left: calc(0.93em + 2px);
+    padding-right: calc(0.93em + 2px);
+}
+
+.camera-overlay .wp-block-button__link {
+    padding-bottom: 17px;
+}
+
+@keyframes ie-l2-flow-linear {
+    0% {
+        background-position: 0 50%;
+        background-size: 300% 300%;
+    }
+    33% {
+        background-position: 50% 30%;
+        background-size: 260% 260%;
+    }
+    66% {
+        background-position: 100% 60%;
+        background-size: 320% 240%;
+    }
+    100% {
+        background-position: 0 50%;
+        background-size: 300% 300%;
+    }
+}
+
+/* Layer 3 — deep magenta core (animated gaussian blur + moving focal point) */
+.ie-l3 {
+    z-index: 3;
+    /* soft magenta radial core; ellipse focal point starts at 70% 30% */
+    background-repeat: no-repeat;
+    background-position: 70% 30%;
+    background-size: 160% 160%;
+
+    /* Gaussian blur via CSS filter; animate it to create breathing effect (only blur now) */
+    filter: blur(6px);
+    will-change: filter, background-position, background-size;
+    animation: ie-l3-breathe 4s ease-in-out infinite;
+}
+
+@keyframes ie-l3-breathe {
+    0% {
+        filter: blur(8px);
+        background-position: 65% 25%;
+        background-size: 150% 150%;
+    }
+    25% {
+        filter: blur(4px);
+        background-position: 75% 35%;
+        background-size: 170% 160%;
+    }
+    50% {
+        filter: blur(6px);
+        background-position: 60% 40%;
+        background-size: 160% 170%;
+    }
+    75% {
+        filter: blur(8px);
+        background-position: 72% 28%;
+        background-size: 180% 150%;
+    }
+    100% {
+        filter: blur(8px);
+        background-position: 65% 25%;
+        background-size: 150% 150%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ie-l3 {
+        animation: none !important;
+        filter: blur(6px) !important; /* keep a subtle blur but stop motion */
+    }
+}
+
+.ie-l4 {
+    /*filter: brightness(calc(100% + 50%)) grayscale(100%) contrast(1000%);*/
+    z-index: 4;
+}
+
+/* TV-like moving noise: continuous horizontal scroll (infinite leftward drift) */
+/*.ie-noise {*/
+/*    position: absolute;*/
+/*    inset: 0;*/
+/*    z-index: 6;*/
+/*    pointer-events: none;*/
+/*    mix-blend-mode: overlay;*/
+/*    background-color: rgb(205, 0, 124);*/
+/*    background-repeat: repeat;*/
+/*    background-image: url(data:image/png;base64,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);*/
+/*    background-size: 180px 180px;*/
+/*    will-change: background-position, opacity, transform;*/
+/*    animation: ie-noise-scroll 0.3s linear infinite;*/
+/*}*/
+
+/*@keyframes ie-noise-scroll {*/
+/*    from { background-position: 0 0; }*/
+/*    to   { background-position: -540px 0; } !* three tiles left (-180 * 3) for smoothness *!*/
+/*}*/
+
+@media (prefers-reduced-motion: reduce) {
+    .ie-noise {
+        animation: none !important;
+        opacity: 0.85;
+    }
+}
+
+/* Big variant */
+.intro-effect-big {
+    padding: 30rem 0 6rem 0;
+}
+
+/* Small variant */
+.intro-effect-small {
+    padding: 10rem 0 3rem 0;
+}
+
+.intro-effect h2.wp-block-heading, .camera-overlay h2.wp-block-heading {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    mix-blend-mode: exclusion;
+    z-index: 7;
+    font-weight: 300;
+    letter-spacing: -0.05em;
+    line-height: 0.8;
+    margin: 0;
+    font-size: 138px;
+}
+
+.intro-effect-small h2.wp-block-heading {
+    font-size: 96px;
+}
+
+@media (max-width: 600px) {
+    .intro-effect h2.wp-block-heading {
+        font-size: 72px;
+    }
+
+    .intro-effect-big {
+        padding-top: 20rem;
+    }
+}
+
+.intro-effect h2.wp-block-heading[style*="font-weight: 900"] {
+    letter-spacing: -0.07em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ie-l2 {
+        animation: none !important;
+        transition: none !important;
+    }
+}

@@ -1,0 +1,136 @@
+.zdw-press > .container {
+	padding-block: 8rem 4rem;
+}
+
+.zdw-press__title {
+	margin: 0 0 2rem;
+	color: var(--zdw);
+}
+
+.zdw-press .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+}
+
+.zdw-press .zdw-press__lead {
+	max-width: 40em;
+	margin: 0 0 clamp(3.5rem, 6vw, 6rem);
+}
+
+.zdw-press h2,
+.zdw-press summary {
+	font-size: var(--zdw-text-h2, 42px);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular, -0.04em);
+	line-height: var(--zdw-leading-h2, 1.1);
+	text-transform: none;
+}
+
+.zdw-press__center {
+	padding-bottom: 3rem;
+}
+
+.zdw-press__center h2 {
+	margin: 0 0 1rem;
+}
+
+.zdw-press__center h2 a {
+	display: inline-flex;
+	align-items: center;
+	gap: 1.5rem;
+	text-decoration: none;
+}
+
+.zdw-press__center h2 a::after {
+	content: "↗";
+	font-weight: 500;
+}
+
+.zdw-press__center p {
+	max-width: 42em;
+	margin: 0;
+}
+
+.zdw-press__lead,
+.zdw-press__center p {
+	font-size: var(--zdw-text-body, 16px);
+	line-height: var(--zdw-leading-body, 1.52);
+}
+
+.zdw-press__releases {
+	border-block: 1px solid currentColor;
+}
+
+.zdw-press__releases > summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	padding-block: calc(1.75rem - 3px) calc(1.75rem + 3px);
+	cursor: pointer;
+	list-style: none;
+}
+
+.zdw-press__releases > summary::-webkit-details-marker {
+	display: none;
+}
+
+.zdw-press__releases > summary::after {
+	content: "";
+	flex: 0 0 .8rem;
+	height: .8rem;
+	margin-right: calc(.4rem + 20px);
+	border-right: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: rotate(45deg);
+	transition: transform 300ms cubic-bezier(.2, 0, 0, 1);
+}
+
+.zdw-press__releases[open]:not(.is-closing) > summary::after {
+	transform: rotate(225deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.zdw-press__releases > summary::after {
+		transition: none;
+	}
+}
+
+.zdw-press__releases h3 {
+	margin: 1rem 0 1.5rem;
+	font-size: var(--zdw-text-h3, 26px);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular, -0.04em);
+	line-height: var(--zdw-leading-h3, 1.24);
+	text-transform: none;
+}
+
+.zdw-press__releases ul {
+	margin: 0 0 2.5rem;
+	padding-left: 1.25rem;
+	max-width: 65em;
+}
+
+.zdw-press__releases li + li {
+	margin-top: 1rem;
+}
+
+.zdw-press a {
+	color: inherit;
+	text-underline-offset: .2em;
+	overflow-wrap: anywhere;
+}
+
+.zdw-press a:hover,
+.zdw-press summary:hover {
+	color: var(--zdw);
+}
+
+.zdw-press a:focus-visible,
+.zdw-press summary:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 6px;
+}
+

@@ -1,0 +1,2745 @@
+/*
+ * Best in Design 2027 — Figma-Faithful Styles
+ *
+ * Source of truth: Figma "Zlin Design Week 2027" (BiD_CZ + MANUAL / Frame 1324)
+ * Uses unified typography & color tokens from design-system.css.
+ * Palette: Ne-černá (#1F1F1F), Holu-bičí šeď (#EBEBEB), Nebesky modrá (#9FBAFF),
+ * plus exact Figma category accents (#F8CF49, #9FBAFF, #16533F, #FFA9EF).
+ * Strictly NO smoke/liquid overlays and NO text glow.
+ */
+
+/* ==========================================================================
+   1. Hero — Full-Viewport Photo + Figma BiD_CZ Composition
+      Wordmark:     BEST IN   (+1.15em)
+                DESIGN        (0)
+                       2027   (+1.78em)
+      Right meta: Designérská soutěž / Deadline: + stepped 31. 1. 2027
+   ========================================================================== */
+
+/* Remove two-tier menu top offset on BiD landing so the hero starts at y=0 and is exactly 100vh like Homepage */
+:is(body.page-id-193, body.page-id-995).zdw-two-tier-menu-active main {
+	padding-top: 0;
+}
+
+:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect.intro-effect {
+	justify-content: flex-end;
+	gap: clamp(0.75rem, 2vh, 1.5rem);
+	min-height: 100vh;
+	min-height: 100svh;
+	padding-top: calc(var(--zdw-tier-top-height, 64px) + var(--zdw-tier-phase-height, 54px) + var(--zdw-tier-notice-height, 0px) + 1.5rem);
+	padding-bottom: clamp(2.5rem, 5.5vh, 4.5rem);
+	background-position: center 45%;
+	background-size: cover;
+}
+
+@media (min-width: 1000px) {
+	:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect.intro-effect {
+		height: 100vh;
+		height: 100svh;
+	}
+}
+
+/* Remove any legacy text shadow on BiD hero */
+:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect * {
+	text-shadow: none !important;
+}
+
+/* Scale BiD wordmark safely within 100svh on shorter landscape screens */
+:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading {
+	font-size: clamp(46px, min(7.6vw, 12.2vh), 110px);
+}
+
+/* Upper-right editorial stack above the main BEST IN / DESIGN / 2027 title:
+   - Announcement flush left (levý prapor) in original 42px Statement SM scale
+   - Deadline closer underneath, stepped diagonally right ("blíž pod to křížem doprava") */
+:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-bid-hero-top {
+	position: relative;
+	z-index: 10;
+	width: auto;
+	max-width: none;
+	margin: 0 var(--zdw-home-content-edge);
+}
+
+:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-bid-hero-top > .wp-block-group__inner-container {
+	width: min(560px, 46vw);
+	max-width: 100%;
+	margin: 0 0 0 auto;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: clamp(1rem, 2.4vh, 1.85rem);
+}
+
+:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-bid-hero-announce {
+	margin: 0;
+	max-width: 24ch;
+	color: var(--zdw-color-white);
+	font-size: clamp(24px, min(3vw, 4.6vh), 42px);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: 1.08;
+	text-align: left;
+	text-wrap: pretty;
+}
+
+/* Exact BiD_CZ zig-zag 3-line display composition: BEST IN / DESIGN / 2027 */
+:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(1) {
+	margin-inline-start: 1.15em;
+}
+
+:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(2) {
+	margin-inline-start: 0;
+}
+
+:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(3) {
+	margin-inline-start: 1.78em;
+}
+
+/* BiD_CZ Deadline block placed closer below announcement, stepped diagonally right */
+:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-bid-hero-deadline {
+	align-self: flex-end;
+	width: auto;
+	max-width: none;
+	margin: 0;
+	text-align: left;
+}
+
+:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-bid-hero-deadline > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+}
+
+:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-bid-hero-deadline-label {
+	margin: 0 0 0.15rem;
+	color: rgba(235, 235, 235, 0.88);
+	font-size: var(--zdw-text-body);
+	font-weight: 400;
+	letter-spacing: var(--zdw-tracking-body);
+	line-height: 1.25;
+	text-align: left;
+}
+
+:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect h3.zdw-bid-hero-deadline-date {
+	margin: 0;
+	padding-inline-start: clamp(0.65em, 2vw, 1.15em);
+	color: var(--zdw-color-white);
+	font-size: clamp(24px, min(3vw, 4.6vh), 42px);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: 1.02;
+	text-align: left;
+	text-transform: none;
+}
+
+/* Keep empty overlay side container from adding vertical height when not in ?hero-text=overlay mode */
+:is(body.page-id-193, body.page-id-995):not(.zdw-bid-hero-overlay) .wp-block-zdw-intro-effect .zdw-intro-effect-side {
+	display: none;
+}
+
+@media (max-width: 999.98px) {
+	:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-bid-hero-top > .wp-block-group__inner-container {
+		width: min(560px, 100%);
+		margin: 0;
+	}
+}
+
+/* ==========================================================================
+   2. Hero Intro Statement Band (Left-aligned larger statement + CTA)
+   ========================================================================== */
+
+.zdw-bid-intro-band {
+	background: var(--zdw-color-dark);
+	color: var(--zdw-color-dove);
+	border-bottom: 1px solid rgba(235, 235, 235, 0.14);
+}
+
+.zdw-bid-intro-band > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin-inline: var(--zdw-home-content-edge, 24px);
+	padding: clamp(3rem, 6vw, 5.5rem) 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.zdw-bid-intro-band .zdw-bid-intro-copy {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.zdw-bid-intro-band .zdw-bid-intro-copy > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.zdw-bid-intro-band .zdw-bid-intro-copy p {
+	margin: 0;
+	max-width: 34ch;
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-statement-sm);
+	font-weight: 400;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: 1.12;
+	text-wrap: pretty;
+}
+
+.zdw-bid-intro-band .wp-block-buttons {
+	margin: 0;
+}
+
+/* Optional comparison preview: /best-in-design/?hero-text=overlay */
+.zdw-bid-hero-overlay-copy {
+	display: none;
+}
+
+body.zdw-bid-hero-overlay .zdw-bid-hero-overlay-copy {
+	display: block !important;
+	margin-top: 1.35rem;
+	text-align: right;
+}
+
+body.zdw-bid-hero-overlay .zdw-bid-hero-overlay-copy > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 1.15rem;
+}
+
+body.zdw-bid-hero-overlay .zdw-bid-hero-overlay-copy p {
+	margin: 0;
+	max-width: 44ch;
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-body);
+	line-height: var(--zdw-leading-body);
+}
+
+body.zdw-bid-hero-overlay .zdw-bid-intro-band {
+	display: none;
+}
+
+@media (max-width: 900px) {
+	.zdw-bid-intro-band > .wp-block-group__inner-container {
+		grid-template-columns: 1fr;
+		align-items: start;
+	}
+}
+
+@media (max-width: 767.98px) {
+	:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect.intro-effect {
+		padding-top: calc(var(--zdw-tier-top-height, 64px) + var(--zdw-tier-notice-height, 32px) + 2rem);
+		padding-bottom: 2.5rem;
+		gap: 1.5rem;
+	}
+
+	:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading {
+		font-size: clamp(42px, 11.2vw, 68px);
+	}
+
+	:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(1) {
+		margin-inline-start: 0.58em;
+	}
+
+	:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(3) {
+		margin-inline-start: 0.96em;
+	}
+
+	:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-bid-hero-announce {
+		font-size: var(--zdw-text-h3);
+		line-height: 1.18;
+	}
+
+	:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-bid-hero-deadline {
+		align-self: flex-start;
+	}
+
+	:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect h3.zdw-bid-hero-deadline-date {
+		padding-inline-start: 0.45em;
+		font-size: var(--zdw-text-h2);
+	}
+}
+
+@media (max-width: 400px) {
+	:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(1) {
+		margin-inline-start: 0.36em;
+	}
+
+	:is(body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(3) {
+		margin-inline-start: 0.72em;
+	}
+}
+
+/* ==========================================================================
+   3. Competition Categories (Holu-bičí šeď Band + 4 Figma Accent Cards)
+   ========================================================================== */
+
+.zdw-bid-categories {
+	background: var(--zdw-color-dove);
+	color: var(--zdw-color-dark);
+}
+
+.zdw-bid-categories > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin-inline: var(--zdw-home-content-edge, 24px);
+	padding-block: clamp(3rem, 6vw, 5.5rem);
+	padding-inline: 0;
+}
+
+.zdw-bid-categories h2 {
+	margin: 0 0 clamp(1.75rem, 3.2vw, 2.75rem);
+	color: var(--zdw-color-dark);
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h2);
+	text-transform: uppercase;
+	scroll-margin-top: 8rem;
+}
+
+.zdw-bid-category-grid .wp-block-group__inner-container,
+.zdw-bid-jury-heading > .wp-block-group__inner-container,
+.zdw-bid-jury-track > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin: 0;
+	padding-inline: 0;
+}
+
+.zdw-bid-category-grid > .wp-block-group__inner-container {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--oc-gutter, 6px);
+	max-width: 880px;
+	margin-inline: auto;
+}
+
+.zdw-bid-category-grid .zdw-oc__card {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	padding: clamp(1.5rem, 2.5vw, 2.25rem);
+}
+
+.zdw-bid-category-grid .zdw-oc__card > .wp-block-group__inner-container {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1.5rem;
+}
+
+.zdw-bid-category-grid .zdw-oc__card h3 {
+	margin: 0;
+	color: inherit;
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: -0.05em;
+	line-height: 0.94;
+	text-transform: uppercase;
+}
+
+.zdw-bid-category-grid .zdw-oc__card h3 .zdw-step {
+	line-height: 0.94;
+}
+
+/* Remove Open Call white highlight box behind category headings on BiD */
+.zdw-bid-category-grid .zdw-oc__card .zdw-oc__highlight {
+	display: inline;
+	padding: 0;
+	background: transparent;
+	color: inherit;
+}
+
+.zdw-bid-category-grid .zdw-oc__card p {
+	margin: 0;
+	padding-inline: 0;
+	max-width: 40ch;
+	color: inherit;
+	font-size: var(--zdw-text-body);
+	line-height: var(--zdw-leading-body);
+}
+
+.zdw-bid-category-grid .zdw-oc__card:nth-child(3) {
+	color: var(--zdw-color-white);
+}
+
+@media (min-width: 768px) {
+	.zdw-bid-category-grid .zdw-oc__card {
+		aspect-ratio: 1.618 / 1;
+	}
+}
+
+@media (max-width: 767.98px) {
+	.zdw-bid-category-grid > .wp-block-group__inner-container {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.zdw-bid-categories .wp-block-buttons {
+	max-width: 880px;
+	margin-block-start: clamp(1.75rem, 3vw, 2.75rem);
+	margin-inline: auto;
+}
+
+/* ==========================================================================
+   4. Awards — Figma BiD_CZ Staggered Hierarchy, NO Smoke / Liquid Effects
+   ========================================================================== */
+
+.zdw-bid-awards {
+	background: var(--zdw-color-dark);
+	color: var(--zdw-color-dove);
+}
+
+.zdw-bid-awards > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin-inline: var(--zdw-home-content-edge, 24px);
+	padding-block: clamp(3rem, 6vw, 5.5rem);
+	padding-inline: 0;
+}
+
+.zdw-bid-awards h2 {
+	margin: 0 0 clamp(1.75rem, 3.2vw, 2.75rem);
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h2);
+	text-transform: uppercase;
+}
+
+.zdw-bid-awards .zdw-bid-award-grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	align-items: start;
+	gap: 6px;
+	margin-block-start: 0;
+	margin-bottom: 0;
+}
+
+.zdw-bid-awards .zdw-bid-award-grid > .wp-block-column {
+	margin: 0;
+}
+
+/* Main Prize column spans full height of the stepped row on desktop */
+.zdw-bid-awards .zdw-bid-award-grid > .zdw-bid-award-col-main {
+	align-self: stretch;
+	display: flex;
+}
+
+/* Architectural podium stairs for 1st / 2nd / 3rd place stepping down from Main Prize.
+   Square (1:1) place cards + 3 uniform steps give Main Prize a crisp ~1:1.41 (A-poster) portrait ratio. */
+@media (min-width: 1100px) {
+	.zdw-bid-awards .zdw-bid-award-grid > .wp-block-column:nth-child(2) {
+		margin-top: clamp(2rem, 2.9vw, 3.25rem);
+	}
+
+	.zdw-bid-awards .zdw-bid-award-grid > .wp-block-column:nth-child(3) {
+		margin-top: clamp(4rem, 5.8vw, 6.5rem);
+	}
+
+	.zdw-bid-awards .zdw-bid-award-grid > .wp-block-column:nth-child(4) {
+		margin-top: clamp(6rem, 8.7vw, 9.75rem);
+	}
+
+	.zdw-bid-awards .zdw-bid-award-grid > .wp-block-column:not(.zdw-bid-award-col-main) .zdw-bid-award-card {
+		aspect-ratio: 1 / 1;
+	}
+
+	.zdw-bid-main-prize {
+		aspect-ratio: 1 / 1.414;
+	}
+}
+
+.zdw-bid-award-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding: clamp(1.5rem, 2.6vw, 2.25rem);
+	background: var(--zdw-color-dove);
+	color: var(--zdw-color-dark);
+}
+
+/* Explicitly ensure zero smoke / liquid pseudo-elements */
+.zdw-bid-award-card::before,
+.zdw-bid-award-card::after,
+.zdw-bid-main-prize::before,
+.zdw-bid-main-prize::after {
+	content: none !important;
+	display: none !important;
+}
+
+.zdw-bid-award-card > .wp-block-group__inner-container {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1.25rem;
+	width: auto;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+}
+
+.zdw-bid-award-card h3 {
+	margin: 0;
+	color: inherit;
+	font-size: var(--zdw-text-h3);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: 1.15;
+	text-transform: none;
+}
+
+.zdw-bid-award-card .zdw-bid-award-place {
+	display: block;
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: -0.05em;
+	line-height: 0.96;
+	text-transform: uppercase;
+}
+
+.zdw-bid-award-card .zdw-bid-award-sub {
+	display: block;
+	margin-top: 0.45rem;
+	padding-inline-start: 0;
+	font-size: var(--zdw-text-caption);
+	font-weight: 500;
+	letter-spacing: -0.015em;
+	line-height: 1.3;
+	color: rgba(31, 31, 31, 0.78);
+}
+
+.zdw-bid-award-card p {
+	margin: 0;
+	padding-inline-start: 0;
+	max-inline-size: 56ch;
+	color: inherit;
+	font-size: var(--zdw-text-body);
+	line-height: var(--zdw-leading-body);
+	text-wrap: pretty;
+}
+
+.zdw-bid-award-card .zdw-bid-award-amount {
+	display: inline-block;
+	padding: 0.04em 0.3em;
+	background: var(--zdw-color-dark);
+	color: var(--zdw-color-white);
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+/* Main Prize: Nebesky modrá (#9FBAFF) full-height highlight card on the left */
+.zdw-bid-main-prize {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	padding: clamp(1.5rem, 2.6vw, 2.25rem);
+	background: var(--zdw-color-blue);
+	color: var(--zdw-color-dark);
+}
+
+.zdw-bid-main-prize > .wp-block-group__inner-container {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1.5rem;
+}
+
+.zdw-bid-main-prize h3 {
+	font-size: clamp(36px, 4.2vw, 68px);
+	font-weight: 500;
+	letter-spacing: -0.055em;
+	line-height: 0.96;
+	text-transform: uppercase;
+}
+
+.zdw-bid-main-prize p {
+	margin: 0;
+	padding-inline-start: 0;
+	max-inline-size: 46ch;
+}
+
+/* Media Award by Czechdesign — light Holu-bičí šeď band outside the dark Awards block */
+.zdw-bid-media-band {
+	background: var(--zdw-color-dove);
+	color: var(--zdw-color-dark);
+	border-bottom: 1px solid rgba(31, 31, 31, 0.14);
+}
+
+.zdw-bid-media-band > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin-inline: var(--zdw-home-content-edge, 24px);
+	padding-block: clamp(3rem, 5.5vw, 4.75rem);
+	padding-inline: 0;
+}
+
+.zdw-bid-media-award {
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	border: 0;
+}
+
+.zdw-bid-media-award .image-box__text {
+	padding: 0;
+}
+
+.zdw-bid-media-award .image-box__text > h4,
+.zdw-bid-media-award .image-box__text > h4.has-dark-color {
+	margin: 0 0 0.75rem;
+	color: var(--zdw-color-dark) !important;
+	font-size: var(--zdw-text-h3);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	text-transform: uppercase;
+}
+
+main:not(.zdw-kantyna) .zdw-bid-media-award .image-box__text > p {
+	max-inline-size: 64ch;
+	padding-inline-start: 0;
+	color: var(--zdw-color-dark);
+	font-size: var(--zdw-text-body);
+	line-height: var(--zdw-leading-body);
+	text-wrap: pretty;
+}
+
+.zdw-bid-media-band .wp-block-buttons {
+	margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+@media (max-width: 1099.98px) and (min-width: 768px) {
+	.zdw-bid-awards .zdw-bid-award-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.zdw-bid-awards .zdw-bid-award-grid > .zdw-bid-award-col-main {
+		grid-column: 1 / -1;
+	}
+
+	.zdw-bid-awards .zdw-bid-award-grid > .wp-block-column:nth-child(3) {
+		margin-top: 1.25rem;
+	}
+
+	.zdw-bid-awards .zdw-bid-award-grid > .wp-block-column:nth-child(4) {
+		margin-top: 2.5rem;
+	}
+}
+
+@media (max-width: 767.98px) {
+	.zdw-bid-awards .zdw-bid-award-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.zdw-bid-main-prize h3 {
+		font-size: var(--zdw-text-h2);
+	}
+}
+
+/* ==========================================================================
+   5. About the Competition Section (Holu-bičí šeď #EBEBEB Band on Landing)
+   ========================================================================== */
+
+:is(.page-id-193, .page-id-995) .zdw-bid-about-band {
+	background: var(--zdw-color-dove) !important;
+	color: var(--zdw-color-dark);
+}
+
+:is(.page-id-193, .page-id-995) .zdw-bid-about-band > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin-inline: var(--zdw-home-content-edge, 24px);
+	padding-block: clamp(3rem, 6vw, 5.5rem);
+	padding-inline: 0;
+}
+
+:is(.page-id-193, .page-id-995) .zdw-bid-about-band > .wp-block-group__inner-container > :is(h2, h3) {
+	margin: 0 0 clamp(1.75rem, 3.2vw, 2.75rem);
+	color: var(--zdw-color-dark) !important;
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h2);
+	text-transform: uppercase;
+}
+
+:is(.page-id-193, .page-id-995) .zdw-bid-about-band .wp-block-columns {
+	gap: clamp(1.5rem, 4vw, 4rem);
+	margin-bottom: clamp(1.75rem, 3.2vw, 2.75rem);
+}
+
+:is(.page-id-193, .page-id-995) .zdw-bid-about-band .wp-block-columns:last-of-type {
+	margin-bottom: 0;
+}
+
+:is(.page-id-193, .page-id-995) .zdw-bid-about-band .wp-block-column {
+	margin-bottom: 0;
+}
+
+:is(.page-id-193, .page-id-995) .zdw-bid-about-band .image-box__text {
+	padding: 0;
+}
+
+:is(.page-id-193, .page-id-995) .zdw-bid-about-band .image-box__text h4,
+:is(.page-id-193, .page-id-995) .zdw-bid-about-band .image-box__text h4.has-dark-color {
+	color: var(--zdw-color-dark) !important;
+	font-size: var(--zdw-text-h3);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+}
+
+:is(.page-id-193, .page-id-995) .zdw-bid-about-band .image-box__text p {
+	color: var(--zdw-color-dark);
+	padding-inline-start: clamp(0rem, 1.5vw, 1.25rem);
+	max-width: 58ch;
+}
+
+@media (max-width: 781.98px) {
+	:is(.page-id-193, .page-id-995) .zdw-bid-about-band .wp-block-columns {
+		flex-direction: column;
+		gap: 1.75rem;
+	}
+
+	:is(.page-id-193, .page-id-995) .zdw-bid-about-band .wp-block-column {
+		flex-basis: 100% !important;
+		width: 100%;
+	}
+
+	:is(.page-id-193, .page-id-995) .zdw-bid-about-band .image-box__text p {
+		padding-inline-start: 0;
+	}
+}
+
+/* ==========================================================================
+   6. Jury Carousel (Landing) + Jury Page (/porota/, /en/judges/)
+      Includes external web/socials/LinkedIn button beside profile arrow
+   ========================================================================== */
+
+:is(.page-id-193, .page-id-995) .zdw-bid-jury-carousel > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin-inline: var(--zdw-home-content-edge, 24px);
+	padding-block: clamp(3rem, 6vw, 5.5rem);
+	padding-inline: 0;
+}
+
+.zdw-bid-jury-heading > .wp-block-group__inner-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-block-end: clamp(1.75rem, 3.2vw, 2.75rem);
+}
+
+.zdw-bid-jury-heading h2 {
+	margin: 0;
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h2);
+	text-transform: uppercase;
+	scroll-margin-top: 8rem;
+}
+
+.zdw-bid-jury-controls {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.zdw-bid-jury-controls[hidden] {
+	display: none;
+}
+
+.zdw-bid-jury-controls button {
+	appearance: none;
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 44px;
+	width: 44px;
+	height: 44px;
+	padding: 0;
+	margin: 0;
+	border: 1px solid rgba(235, 235, 235, 0.42);
+	background: transparent;
+	color: var(--zdw-color-white);
+	font: inherit;
+	font-size: 1.2rem;
+	line-height: 1;
+	cursor: pointer;
+	transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.zdw-bid-jury-controls button svg {
+	display: block;
+	width: 18px;
+	height: 18px;
+	flex: none;
+}
+
+.zdw-bid-jury-controls button:hover:not(:disabled) {
+	border-color: var(--zdw-color-blue);
+	background: var(--zdw-color-blue);
+	color: var(--zdw-color-dark);
+}
+
+.zdw-bid-jury-controls button:disabled {
+	opacity: 0.35;
+	cursor: default;
+}
+
+.zdw-bid-jury-controls button:focus-visible,
+.zdw-bid-jury-track > .wp-block-group__inner-container:focus-visible {
+	outline: 2px solid var(--zdw-color-blue);
+	outline-offset: 3px;
+}
+
+.zdw-bid-jury-track > .wp-block-group__inner-container {
+	--bid-jury-gap: clamp(0.9rem, 1.8vw, 1.5rem);
+
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: calc((100% - 3 * var(--bid-jury-gap)) / 4);
+	gap: var(--bid-jury-gap);
+	padding-block: 0.25rem;
+	overflow-x: auto;
+	overscroll-behavior-inline: contain;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.zdw-bid-jury-track > .wp-block-group__inner-container::-webkit-scrollbar {
+	display: none;
+	width: 0;
+	height: 0;
+}
+
+.zdw-bid-jury-track > .wp-block-group__inner-container > * {
+	min-width: 0;
+	scroll-snap-align: start;
+}
+
+.zdw-bid-jury-carousel > .wp-block-group__inner-container > .wp-block-buttons {
+	margin-block-start: 2rem;
+}
+
+/* Dedicated Jury page (/porota/, /en/judges/) — constrained intro + generous category bands */
+.zdw-bid-jury-intro {
+	margin-bottom: clamp(3rem, 5.5vw, 5rem);
+}
+
+.zdw-bid-jury-intro p {
+	max-width: 64ch;
+	color: var(--zdw-color-dove);
+}
+
+.zdw-bid-jury:not(.zdw-bid-jury-carousel) {
+	margin-top: clamp(4.5rem, 8.5vw, 8rem);
+	padding-top: clamp(2.5rem, 4.5vw, 4rem);
+	border-top: 1px solid rgba(235, 235, 235, 0.16);
+}
+
+.zdw-bid-jury-intro + .zdw-bid-jury:not(.zdw-bid-jury-carousel) {
+	margin-top: 0;
+}
+
+.zdw-bid-jury:not(.zdw-bid-jury-carousel):last-of-type {
+	margin-bottom: clamp(4rem, 7vw, 6rem);
+}
+
+.zdw-bid-jury:not(.zdw-bid-jury-carousel) + .wp-block-spacer {
+	display: none;
+}
+
+.zdw-bid-jury:not(.zdw-bid-jury-carousel) > .wp-block-group__inner-container {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.zdw-bid-jury:not(.zdw-bid-jury-carousel) > .wp-block-group__inner-container > h3 {
+	grid-column: 1 / -1;
+	margin: 0 0 clamp(1rem, 2.2vw, 1.75rem);
+	padding-bottom: 0;
+	border-bottom: 0;
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: -0.05em;
+	line-height: var(--zdw-leading-step);
+	text-transform: uppercase;
+}
+
+.zdw-bid-jury:not(.zdw-bid-jury-carousel) > .wp-block-group__inner-container > h3 .zdw-step {
+	line-height: 1.02;
+}
+
+/* Unified Judge Card (.person-item) across carousel, jury page, and single profile */
+.zdw-bid-jury .person-item,
+.more-speakers.zdw-bid-jury .person-item {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: none;
+	margin: 0;
+	text-transform: none;
+	color: var(--zdw-color-dove);
+}
+
+.zdw-bid-jury .person-item[id] {
+	scroll-margin-top: 9rem;
+}
+
+.zdw-bid-jury .person-item__media {
+	position: relative;
+	overflow: hidden;
+	background: var(--zdw-color-surface-dark);
+}
+
+.zdw-bid-jury .person-item__media-link {
+	display: block;
+	overflow: hidden;
+	background: var(--zdw-color-surface-dark);
+}
+
+.zdw-bid-jury .person-item__socials {
+	position: absolute;
+	right: 0.75rem;
+	bottom: 0.75rem;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+}
+
+.zdw-bid-jury .person-item__social-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 22px;
+	height: 22px;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: var(--zdw-color-white);
+	text-decoration: none;
+	filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.55));
+	transition: color 160ms ease, transform 160ms ease, opacity 160ms ease;
+}
+
+.zdw-bid-jury .person-item__social-icon svg {
+	display: block;
+	width: 20px;
+	height: 20px;
+}
+
+.zdw-bid-jury .person-item__social-icon:hover,
+.zdw-bid-jury .person-item__social-icon:focus-visible {
+	color: var(--zdw-color-blue);
+	transform: translateY(-1px);
+}
+
+.zdw-bid-jury .person-item__social-icon:focus-visible {
+	outline: 2px solid var(--zdw-color-blue);
+	outline-offset: 3px;
+}
+
+.zdw-bid-jury .person-item img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+	transition: transform 240ms ease;
+}
+
+.zdw-bid-jury .person-item:hover img {
+	transform: scale(1.02);
+}
+
+.zdw-bid-jury .person-item__placeholder,
+.zdw-bid-jury .person-item:not(.person-item--has-photo):not(:has(.person-item__placeholder)):not(:has(img))::before,
+.zdw-bid-judge-placeholder::before {
+	content: "";
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	aspect-ratio: 4 / 5;
+	border: 1px dashed rgba(235, 235, 235, 0.28);
+	background-color: rgba(255, 255, 255, 0.04);
+}
+
+.zdw-bid-jury .person-item__bottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	padding-top: 0.85rem;
+}
+
+.zdw-bid-jury .person-item__bottom > div {
+	display: block;
+}
+
+.zdw-bid-jury .person-item__bottom .person-item__text {
+	flex: 1 1 auto;
+	min-width: 0;
+	width: auto;
+	padding-right: 0;
+}
+
+.zdw-bid-jury .person-item h4,
+.zdw-bid-jury .person-item h4.h5 {
+	margin: 0 0 0.2rem;
+	font-size: var(--zdw-text-body);
+	font-weight: 500;
+	letter-spacing: -0.02em;
+	line-height: 1.25;
+	text-transform: none;
+	color: var(--zdw-color-white);
+}
+
+.zdw-bid-jury .person-item h4 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.zdw-bid-jury .person-item h4 a:hover {
+	color: var(--zdw-color-blue);
+}
+
+.zdw-bid-jury .person-item small {
+	display: block;
+	color: rgba(235, 235, 235, 0.72);
+	font-size: var(--zdw-text-caption);
+	line-height: 1.3;
+}
+
+/* Profile detail arrow button next to judge name */
+.zdw-bid-jury .person-item__actions {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.zdw-bid-jury .person-item__button {
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 36px;
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	margin: 0;
+	float: none;
+	border: 1px solid var(--zdw-color-blue);
+	background: var(--zdw-color-blue);
+	color: var(--zdw-color-dark);
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1;
+	text-decoration: none;
+	transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.zdw-bid-jury .person-item__button svg {
+	display: block;
+	width: 16px;
+	height: 16px;
+	flex: none;
+}
+
+.zdw-bid-jury .person-item__button:hover,
+.zdw-bid-jury .person-item__button:focus-visible {
+	border-color: var(--zdw-color-white);
+	background: var(--zdw-color-white);
+	color: var(--zdw-color-dark);
+}
+
+.zdw-bid-jury .person-item__button:focus-visible {
+	outline: 2px solid var(--zdw-color-blue);
+	outline-offset: 2px;
+}
+
+.more-speakers.zdw-bid-jury {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 1.5rem;
+}
+
+.more-speakers.zdw-bid-jury > h2 {
+	grid-column: 1 / -1;
+	margin: 0;
+}
+
+@media (max-width: 1000px) {
+	.zdw-bid-jury-track > .wp-block-group__inner-container {
+		grid-auto-columns: calc((100% - 2 * var(--bid-jury-gap)) / 3);
+	}
+
+	.zdw-bid-jury:not(.zdw-bid-jury-carousel) > .wp-block-group__inner-container,
+	.more-speakers.zdw-bid-jury {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 767.98px) {
+	.zdw-bid-jury-track > .wp-block-group__inner-container {
+		grid-auto-columns: calc((100% - var(--bid-jury-gap)) / 2);
+	}
+}
+
+@media (max-width: 540px) {
+	.zdw-bid-jury-track > .wp-block-group__inner-container {
+		grid-auto-columns: 78%;
+	}
+
+	.zdw-bid-jury:not(.zdw-bid-jury-carousel) > .wp-block-group__inner-container,
+	.more-speakers.zdw-bid-jury {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ==========================================================================
+   7. Aftermovie 2026 Section
+   ========================================================================== */
+
+:is(.page-id-193, .page-id-995) .zdw-bid-aftermovie-section {
+	border-top: 1px solid rgba(235, 235, 235, 0.14);
+}
+
+:is(.page-id-193, .page-id-995) .zdw-bid-aftermovie-section > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin-inline: var(--zdw-home-content-edge, 24px);
+	padding-block: clamp(3rem, 6vw, 5.5rem);
+	padding-inline: 0;
+}
+
+.zdw-bid-aftermovie-section h2 {
+	margin: 0 0 clamp(1.5rem, 3vw, 2.5rem);
+	max-width: 30ch;
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h2);
+}
+
+.zdw-bid-aftermovie {
+	width: 100%;
+	max-width: 1120px;
+	aspect-ratio: 16 / 9;
+	margin: 0 0 1.25rem;
+	background: #000;
+}
+
+.zdw-bid-aftermovie iframe {
+	width: 100%;
+	height: 100%;
+	display: block;
+	border: 0;
+}
+
+/* ==========================================================================
+   8. Finalists Showcase (/finaliste/, /en/finalists/) — Vertical Photo Stack
+   ========================================================================== */
+
+body.zdw-bid-finalists-page main > p:empty {
+	display: none;
+}
+
+body.zdw-bid-finalists-page main > .wp-block-group > .wp-block-group__inner-container {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(2.5rem, 4.5vw, 4rem);
+	padding-bottom: clamp(4rem, 7vw, 6.5rem);
+}
+
+body.zdw-bid-finalists-page main h3.wp-block-heading {
+	margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid rgba(235, 235, 235, 0.22);
+	color: var(--zdw-color-blue);
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h2);
+	text-transform: uppercase;
+}
+
+body.zdw-bid-finalists-page main h3.wp-block-heading:first-child {
+	margin-top: 1rem;
+}
+
+.zdw-finalist-showcase {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 1.5rem;
+	padding-bottom: clamp(2rem, 4vw, 3.25rem);
+	border-bottom: 1px solid rgba(235, 235, 235, 0.12);
+}
+
+.zdw-finalist-showcase__media {
+	display: block;
+	overflow: hidden;
+	background: var(--zdw-color-surface-dark);
+}
+
+.zdw-finalist-showcase__media img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 78vh;
+	object-fit: cover;
+	transition: transform 320ms ease;
+}
+
+.zdw-finalist-showcase__media:hover img {
+	transform: scale(1.015);
+}
+
+.zdw-finalist-showcase__body {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 0.75rem;
+	max-width: 74ch;
+}
+
+.zdw-finalist-showcase__meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.5rem 1.25rem;
+}
+
+.zdw-finalist-showcase__author {
+	margin: 0;
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-body);
+	font-weight: 500;
+}
+
+.zdw-finalist-showcase__category {
+	color: var(--zdw-color-blue);
+	font-size: var(--zdw-text-caption);
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+}
+
+.zdw-finalist-showcase__title {
+	margin: 0;
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-h3);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h3);
+}
+
+.zdw-finalist-showcase__title a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.zdw-finalist-showcase__title a:hover {
+	color: var(--zdw-color-blue);
+}
+
+.zdw-finalist-showcase__excerpt {
+	margin: 0;
+	color: rgba(235, 235, 235, 0.86);
+	font-size: var(--zdw-text-body);
+	line-height: var(--zdw-leading-body);
+}
+
+.zdw-finalist-showcase__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-top: 0.35rem;
+	width: fit-content;
+	color: var(--zdw-color-blue);
+	font-size: var(--zdw-text-body);
+	font-weight: 500;
+	text-decoration: none;
+}
+
+.zdw-finalist-showcase__link:hover {
+	color: var(--zdw-color-white);
+}
+
+/* ==========================================================================
+   9. FAQ Redesign — Spacious Editorial Split + Numbered Smooth Accordion
+   ========================================================================== */
+
+:is(body.page-id-28911, body.page-id-29580) h1.page-title {
+	margin-bottom: clamp(2rem, 4vw, 3.25rem);
+	line-height: var(--zdw-leading-step);
+}
+
+.zdw-bid-faq {
+	padding-block: 1rem clamp(4rem, 7vw, 6rem);
+}
+
+.zdw-bid-faq-layout > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.72fr);
+	gap: clamp(2rem, 5vw, 5rem);
+	align-items: start;
+}
+
+.zdw-bid-faq-list {
+	order: 1;
+}
+
+.zdw-bid-faq-aside {
+	order: 2;
+	position: sticky;
+	top: 9rem;
+	padding: clamp(1.5rem, 2.5vw, 2.25rem);
+	background: var(--zdw-color-surface-dark);
+	border-top: 3px solid var(--zdw-color-blue);
+}
+
+.zdw-bid-faq-aside > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+}
+
+.zdw-bid-faq-aside h2 {
+	margin: 0 0 1rem;
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-h3);
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.zdw-bid-faq-aside p {
+	margin: 0 0 1rem;
+	color: var(--zdw-color-dove);
+	font-size: var(--zdw-text-body);
+	line-height: var(--zdw-leading-body);
+}
+
+.zdw-bid-faq-aside p:last-child {
+	margin-bottom: 0;
+}
+
+.zdw-bid-faq-aside a {
+	color: var(--zdw-color-blue);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
+	overflow-wrap: anywhere;
+}
+
+.zdw-bid-faq-list > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+	counter-reset: faq-item;
+}
+
+.zdw-bid-faq details {
+	counter-increment: faq-item;
+	border-top: 1px solid rgba(235, 235, 235, 0.2);
+	max-width: none;
+	transition: background-color 200ms ease;
+}
+
+.zdw-bid-faq details:last-child {
+	border-bottom: 1px solid rgba(235, 235, 235, 0.2);
+}
+
+.zdw-bid-faq details[open] {
+	background: rgba(255, 255, 255, 0.03);
+}
+
+.zdw-bid-faq summary {
+	position: relative;
+	display: grid;
+	grid-template-columns: 2.5rem minmax(0, 1fr) 40px;
+	align-items: center;
+	gap: 1rem;
+	padding: 1.5rem 1rem 1.5rem 0.75rem;
+	cursor: pointer;
+	list-style: none;
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-h3);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h3);
+	transition: color 160ms ease;
+}
+
+.zdw-bid-faq summary::-webkit-details-marker {
+	display: none;
+}
+
+.zdw-bid-faq summary::before {
+	content: counter(faq-item, decimal-leading-zero);
+	color: var(--zdw-color-blue);
+	font-size: var(--zdw-text-caption);
+	font-weight: 500;
+	letter-spacing: 0.04em;
+}
+
+.zdw-bid-faq summary::after {
+	content: "+";
+	display: grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	border: 1px solid rgba(235, 235, 235, 0.35);
+	color: var(--zdw-color-white);
+	font-size: 1.35rem;
+	font-weight: 500;
+	line-height: 1;
+	transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 200ms ease;
+}
+
+.zdw-bid-faq summary:hover {
+	color: var(--zdw-color-blue);
+}
+
+.zdw-bid-faq summary:hover::after {
+	border-color: var(--zdw-color-blue);
+}
+
+.zdw-bid-faq details[open]:not(.is-closing) > summary::after {
+	content: "−";
+	border-color: var(--zdw-color-blue);
+	background: var(--zdw-color-blue);
+	color: var(--zdw-color-dark);
+}
+
+.zdw-bid-faq details > p {
+	margin: 0;
+	padding: 0 3.75rem 1rem 4.25rem;
+	max-width: 68ch;
+	color: var(--zdw-color-dove);
+	font-size: var(--zdw-text-body);
+	line-height: var(--zdw-leading-body);
+}
+
+.zdw-bid-faq details > p:last-child {
+	padding-bottom: 1.75rem;
+}
+
+.zdw-bid-faq details > p a {
+	color: var(--zdw-color-blue);
+	text-underline-offset: 0.2em;
+}
+
+.zdw-bid-faq summary:focus-visible,
+.zdw-bid-registration :is(input, select, textarea, button, a):focus-visible {
+	outline: 2px solid var(--zdw-color-blue);
+	outline-offset: 3px;
+}
+
+@media (max-width: 960px) {
+	.zdw-bid-faq-layout > .wp-block-group__inner-container {
+		grid-template-columns: 1fr;
+	}
+
+	.zdw-bid-faq-aside {
+		position: static;
+		order: 2;
+	}
+}
+
+@media (max-width: 600px) {
+	.zdw-bid-faq summary {
+		grid-template-columns: 2rem minmax(0, 1fr) 36px;
+		gap: 0.75rem;
+		padding: 1.25rem 0.5rem;
+	}
+
+	.zdw-bid-faq summary::after {
+		width: 36px;
+		height: 36px;
+	}
+
+	.zdw-bid-faq details > p {
+		padding: 0 0.75rem 1rem 2.75rem;
+		overflow-wrap: break-word;
+	}
+
+	.zdw-bid-faq-aside .wp-block-button__link {
+		width: 100%;
+	}
+}
+
+/* Single judge profile mobile spacing */
+@media (max-width: 599.98px) {
+	body.single-porotce .speaker-nav {
+		padding-top: 3rem;
+	}
+
+	body.single-porotce .speaker-thumbnail {
+		max-width: 100%;
+	}
+
+	body.single-porotce .speaker-section {
+		padding: 1.5rem 0;
+	}
+}
+
+/* ==========================================================================
+   10. Competition Subpages (About, Journey, Contact, Registration)
+   ========================================================================== */
+
+.zdw-bid-content {
+	width: 100%;
+	max-width: 1100px;
+	margin: 2rem auto 4.5rem;
+	padding-inline: 24px;
+}
+
+@media (min-width: 1440px) {
+	.zdw-bid-content {
+		width: 1240px;
+		max-width: 1240px;
+	}
+}
+
+@media (min-width: 1600px) {
+	.zdw-bid-content {
+		width: 1430px;
+		max-width: 1430px;
+	}
+}
+
+.zdw-bid-content > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+}
+
+.zdw-bid-content > p,
+.zdw-bid-journey-page > .wp-block-group__inner-container > p,
+.zdw-bid-stage p,
+.zdw-bid-rules-summary p {
+	max-width: 66ch;
+}
+
+.zdw-bid-journey-page .wp-block-group__inner-container {
+	width: 100%;
+	max-width: none;
+	margin-inline: 0;
+	padding-inline: 0;
+}
+
+.zdw-bid-rules-summary {
+	margin-block: 3.5rem 2.5rem;
+	padding: clamp(1.5rem, 3vw, 2.5rem);
+	background: var(--zdw-color-surface-dark);
+	border-inline-start: 4px solid var(--zdw-color-blue);
+}
+
+.zdw-bid-rules-summary h2 {
+	margin-top: 0;
+	font-weight: 500;
+	text-transform: uppercase;
+	scroll-margin-top: 9rem;
+}
+
+/* Ambient AE Liquid background on Best in Design Landing light panels (#EBEBEB) */
+body.zdw-bid-landing-liquid:not(.zdw-bid-liquid-off) {
+	background-color: var(--zdw-color-dove);
+}
+
+body.zdw-bid-landing-liquid main {
+	position: relative;
+	z-index: 1;
+}
+
+/* Light Holu-bičí šeď bands act as windows over the fixed liquid canvas */
+body.zdw-bid-landing-liquid:not(.zdw-bid-liquid-off) main > .wp-block-group.zdw-bid-categories,
+body.zdw-bid-landing-liquid:not(.zdw-bid-liquid-off) main > .wp-block-group.zdw-bid-media-band,
+body.zdw-bid-landing-liquid:not(.zdw-bid-liquid-off) main > .wp-block-group.zdw-bid-about-band {
+	position: relative;
+	z-index: 1;
+	background: transparent !important;
+	background-color: transparent !important;
+}
+
+body.zdw-bid-landing-liquid:not(.zdw-bid-liquid-off) .zdw-bid-about-band .image-box {
+	background: transparent;
+}
+
+/* Dark bands & footer remain opaque so they cleanly crop/cover the liquid */
+body.zdw-bid-landing-liquid main > .wp-block-zdw-intro-effect,
+body.zdw-bid-landing-liquid main > .zdw-bid-intro-band,
+body.zdw-bid-landing-liquid main > .zdw-bid-awards,
+body.zdw-bid-landing-liquid main > .zdw-bid-jury-carousel,
+body.zdw-bid-landing-liquid main > .zdw-bid-aftermovie-section,
+body.zdw-bid-landing-liquid footer.footer {
+	position: relative;
+	z-index: 2;
+	background-color: var(--zdw-color-dark);
+}
+
+body.zdw-bid-landing-liquid .zdw-bid-liquid-editor .zdw-pt-ring {
+	stroke: rgba(77, 108, 214, 0.62);
+}
+
+body.zdw-bid-landing-liquid .zdw-bid-liquid-editor .zdw-pt-ring.is-selected {
+	stroke: #4d6cd6;
+}
+
+body.zdw-bid-landing-liquid .zdw-bid-liquid-editor .zdw-bez-handle {
+	fill: var(--zdw-color-white);
+	stroke: var(--zdw-color-dark);
+}
+
+body.zdw-bid-landing-liquid .zdw-bid-liquid-editor .zdw-bez-handle.is-selected,
+body.zdw-bid-landing-liquid .zdw-bid-liquid-editor .zdw-bez-anchor.is-selected {
+	fill: var(--zdw-color-dark);
+	stroke: var(--zdw-color-white);
+}
+
+body.zdw-bid-landing-liquid .zdw-bid-liquid-editor .zdw-bez-label.is-selected {
+	fill: var(--zdw-color-white);
+}
+
+@media (max-width: 860px) {
+	body.zdw-bid-landing-liquid .zdw-bid-liquid-bg.is-ready {
+		opacity: 0.85;
+	}
+}
+
+/* Ambient AE Liquid background on Cesta soutěží / Competition Journey */
+body.zdw-bid-journey-liquid {
+	position: relative;
+	transition: background-color 280ms ease, color 280ms ease;
+}
+
+/* Optional Figma Nebesky modrá (#9FBAFF) page surface mode for Cesta soutěží */
+html.zdw-bid-journey-blue,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue {
+	background-color: var(--zdw-color-blue);
+	color: var(--zdw-color-dark);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue ::selection {
+	background: var(--zdw-color-dark);
+	color: var(--zdw-color-white);
+}
+
+/* Header & top notice adapted to Figma blue canvas */
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__notice {
+	background: var(--zdw-color-dark);
+	color: var(--zdw-color-white);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__notice a,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__notice a:visited {
+	color: var(--zdw-color-white);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue header.zdw-two-tier.nav-bg {
+	background-color: rgba(159, 186, 255, 0.94);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__logo img {
+	filter: brightness(0) invert(0.122);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__top .zdw-two-tier__menu > li > a,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__phase-row .zdw-two-tier__menu > li > a,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__desktop-language .zdw-two-tier__language,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__trigger {
+	color: var(--zdw-color-dark);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__top .zdw-two-tier__menu > li > a:hover,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__top .zdw-two-tier__menu > li > a:focus-visible,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__phase-row .zdw-two-tier__menu > li > a:hover,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__phase-row .zdw-two-tier__menu > li > a:focus-visible,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__desktop-language .zdw-two-tier__language:hover,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__desktop-language .zdw-two-tier__language:focus-visible,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__top .zdw-two-tier__menu > .current-menu-item > a,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__top .zdw-two-tier__menu > .current-menu-ancestor > a,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__phase-row .zdw-two-tier__menu > .current-menu-item > a,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__phase-row .zdw-two-tier__menu > .current-menu-ancestor > a {
+	color: var(--zdw-color-dark);
+	text-decoration: underline;
+	text-underline-offset: 4px;
+	text-decoration-thickness: 1.5px;
+}
+
+/* Keep desktop dropdowns & mobile drawer dark for crisp contrast over the blue surface */
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__menu .sub-menu a,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__mobile-panel .zdw-two-tier__menu a,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__mobile-panel .zdw-two-tier__language {
+	color: var(--zdw-color-dove);
+	text-decoration: none;
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__menu .sub-menu a:hover,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__menu .sub-menu a:focus-visible,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__menu .sub-menu .current-menu-item > a,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__mobile-panel .zdw-two-tier__menu a:hover,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__mobile-panel .zdw-two-tier__menu .current-menu-item > a,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-two-tier__mobile-panel .zdw-two-tier__menu .current-menu-ancestor > a {
+	color: var(--zdw-color-blue);
+	text-decoration: none;
+}
+
+/* Journey page typography, halos, rules card & CTAs on Figma blue canvas */
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue main {
+	--wp--preset--color--zdw: var(--zdw-color-dark);
+	--wp--preset--color--light: var(--zdw-color-dark);
+	--zdw: var(--zdw-color-dark);
+	--light: var(--zdw-color-dark);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue main h1.page-title,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue main h1.page-title.has-zdw-color,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue main .has-zdw-color {
+	color: var(--zdw-color-dark) !important;
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-journey-page > .wp-block-group__inner-container > p.zdw-statement--sm {
+	color: var(--zdw-color-dark);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-journey-page > .wp-block-group__inner-container > p.zdw-statement--sm::before {
+	background: radial-gradient(
+		ellipse 78% 72% at 44% 50%,
+		rgba(159, 186, 255, 0.86) 0%,
+		rgba(159, 186, 255, 0.58) 46%,
+		rgba(159, 186, 255, 0) 100%
+	);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-stage,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue.zdw-bid-liquid-off .zdw-bid-stage:nth-child(n) {
+	--stage-accent: var(--zdw-color-dark);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-stage::before {
+	background: radial-gradient(
+		ellipse 78% 72% at 44% 52%,
+		rgba(159, 186, 255, 0.88) 0%,
+		rgba(159, 186, 255, 0.68) 44%,
+		rgba(159, 186, 255, 0.30) 74%,
+		rgba(159, 186, 255, 0) 100%
+	);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-stage h2,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-stage p:not(.zdw-bid-stage-date) {
+	color: var(--zdw-color-dark);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-stage .zdw-bid-stage-meta span {
+	color: rgba(31, 31, 31, 0.76);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-journey-page a:not(.wp-block-button__link) {
+	color: var(--zdw-color-dark);
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-journey-page a:not(.wp-block-button__link):hover,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-journey-page a:not(.wp-block-button__link):focus-visible {
+	opacity: 0.72;
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-rules-summary {
+	background: rgba(255, 255, 255, 0.92);
+	border-inline-start-color: var(--zdw-color-dark);
+	color: var(--zdw-color-dark);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-rules-summary h2,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-rules-summary p,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-rules-summary strong {
+	color: var(--zdw-color-dark);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-journey-page .wp-block-button__link {
+	background: var(--zdw-color-dark);
+	color: var(--zdw-color-white) !important;
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-journey-page .wp-block-button__link:hover,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-journey-page .wp-block-button__link:focus-visible {
+	background: var(--zdw-color-white);
+	color: var(--zdw-color-dark) !important;
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-rules-summary .wp-block-button__link:hover,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-rules-summary .wp-block-button__link:focus-visible {
+	background: var(--zdw-color-blue);
+	color: var(--zdw-color-dark) !important;
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-journey-page .wp-block-button__link:focus-visible {
+	outline-color: var(--zdw-color-dark);
+}
+
+/* Keep SVG editor handles & rings high-contrast on Figma blue background */
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-liquid-editor .zdw-pt-ring {
+	stroke: rgba(31, 31, 31, 0.45);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-liquid-editor .zdw-pt-ring.is-selected {
+	stroke: var(--zdw-color-dark);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-liquid-editor .zdw-bez-handle {
+	fill: var(--zdw-color-white);
+	stroke: var(--zdw-color-dark);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-liquid-editor .zdw-bez-handle.is-selected,
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-liquid-editor .zdw-bez-anchor.is-selected {
+	fill: var(--zdw-color-dark);
+	stroke: var(--zdw-color-white);
+}
+
+body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-liquid-editor .zdw-bez-label.is-selected {
+	fill: var(--zdw-color-white);
+}
+
+@media (max-width: 860px) {
+	body.zdw-bid-journey-liquid.zdw-bid-journey-blue .zdw-bid-stage + .zdw-bid-stage {
+		border-top-color: rgba(31, 31, 31, 0.22);
+	}
+}
+
+.zdw-bid-liquid-bg {
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 700ms ease;
+}
+
+.zdw-bid-liquid-bg.is-ready {
+	opacity: 1;
+}
+
+@media (max-width: 860px) {
+	.zdw-bid-liquid-bg.is-ready {
+		opacity: 0.55;
+	}
+}
+
+body.zdw-bid-journey-liquid main {
+	position: relative;
+	z-index: 1;
+}
+
+body.zdw-bid-journey-liquid footer.footer {
+	position: relative;
+	z-index: 2;
+	background-color: var(--zdw-color-dark);
+}
+
+.zdw-bid-liquid-editor {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 60;
+	pointer-events: none;
+	overflow: visible;
+	user-select: none;
+}
+
+.zdw-bid-liquid-editor .zdw-pt-ring-hit {
+	stroke: transparent;
+	stroke-width: 24;
+	pointer-events: stroke;
+	touch-action: none;
+	cursor: ew-resize;
+}
+
+.zdw-bid-liquid-editor .zdw-pt-ring {
+	stroke: rgba(255, 255, 255, 0.48);
+	stroke-width: 1.5;
+	stroke-dasharray: 6 5;
+	pointer-events: none;
+}
+
+.zdw-bid-liquid-editor .zdw-pt-ring.is-selected {
+	stroke: var(--zdw-color-blue);
+	stroke-width: 2;
+}
+
+.zdw-bid-liquid-editor .zdw-bez-handle {
+	fill: var(--zdw-color-dark);
+	stroke: var(--zdw-color-blue);
+	stroke-width: 2;
+	pointer-events: all;
+	touch-action: none;
+	cursor: ew-resize;
+}
+
+.zdw-bid-liquid-editor .zdw-bez-handle.is-selected {
+	fill: var(--zdw-color-blue);
+	stroke: var(--zdw-color-white);
+}
+
+.zdw-bid-liquid-editor .zdw-bez-anchor {
+	fill: var(--zdw-color-white);
+	stroke: var(--zdw-color-dark);
+	stroke-width: 2;
+	pointer-events: all;
+	touch-action: none;
+	cursor: grab;
+}
+
+.zdw-bid-liquid-editor .zdw-bez-anchor.is-selected {
+	fill: var(--zdw-color-blue);
+	stroke: var(--zdw-color-white);
+	stroke-width: 2.5;
+}
+
+.zdw-bid-liquid-editor .zdw-bez-handle:active,
+.zdw-bid-liquid-editor .zdw-bez-anchor:active {
+	cursor: grabbing;
+}
+
+.zdw-bid-liquid-editor .zdw-bez-label {
+	fill: var(--zdw-color-dark);
+	font-family: var(--zdw-font-sans);
+	font-size: 11px;
+	font-weight: 500;
+	text-anchor: middle;
+	pointer-events: none;
+}
+
+.zdw-bid-liquid-debug {
+	position: fixed;
+	right: 1rem;
+	bottom: 3.25rem;
+	z-index: 90;
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+	width: min(26.5rem, calc(100vw - 2rem));
+	max-height: calc(100vh - 4.75rem);
+	overflow-y: auto;
+	padding: 0.85rem 1rem;
+	background: rgba(31, 31, 31, 0.96);
+	border: 1px solid rgba(235, 235, 235, 0.25);
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-caption);
+	line-height: 1.3;
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+}
+
+.zdw-bid-liquid-debug__head {
+	display: flex;
+	flex-direction: column;
+	gap: 0.15rem;
+}
+
+.zdw-bid-liquid-debug__head strong {
+	font-weight: 500;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+}
+
+.zdw-bid-liquid-debug__hint {
+	color: var(--zdw-color-dove);
+	opacity: 0.78;
+}
+
+.zdw-bid-liquid-debug__legend,
+.zdw-bid-liquid-debug__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.45rem;
+}
+
+.zdw-bid-liquid-debug__legend span {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	color: var(--zdw-color-dove);
+}
+
+.zdw-bid-liquid-debug__legend i {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+}
+
+.zdw-bid-liquid-debug__section {
+	border-top: 1px solid rgba(235, 235, 235, 0.14);
+	padding-top: 0.45rem;
+}
+
+.zdw-bid-liquid-debug__section > summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer;
+	list-style: none;
+	color: var(--zdw-color-dove);
+	font-weight: 500;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	user-select: none;
+}
+
+.zdw-bid-liquid-debug__section > summary::-webkit-details-marker {
+	display: none;
+}
+
+.zdw-bid-liquid-debug__section > summary::after {
+	content: "+";
+	font-size: 14px;
+	line-height: 1;
+	color: var(--zdw-color-blue);
+}
+
+.zdw-bid-liquid-debug__section[open] > summary::after {
+	content: "−";
+}
+
+.zdw-bid-liquid-debug__section-body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+	margin-top: 0.45rem;
+}
+
+.zdw-bid-liquid-debug__sliders {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.zdw-bid-liquid-debug__sliders label {
+	display: grid;
+	grid-template-columns: 4.5rem 1fr 3.2rem;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--zdw-color-dove);
+}
+
+.zdw-bid-liquid-debug__sliders input[type="range"] {
+	width: 100%;
+	accent-color: var(--zdw-color-blue);
+}
+
+.zdw-bid-liquid-debug__sliders output {
+	text-align: right;
+	color: var(--zdw-color-white);
+}
+
+.zdw-bid-liquid-debug__sliders label.zdw-bid-liquid-debug__check {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	cursor: pointer;
+}
+
+.zdw-bid-liquid-debug__sliders label.zdw-bid-liquid-debug__check input {
+	accent-color: var(--zdw-color-blue);
+}
+
+.zdw-bid-liquid-seed-row {
+	display: grid;
+	grid-template-columns: 4.5rem 1fr auto;
+	align-items: center;
+	gap: 0.45rem;
+	color: var(--zdw-color-dove);
+}
+
+.zdw-bid-liquid-seed-row input[type="text"] {
+	width: 100%;
+	min-width: 0;
+	padding: 0.22rem 0.4rem;
+	border: 1px solid rgba(235, 235, 235, 0.25);
+	background: rgba(18, 18, 18, 0.85);
+	color: var(--zdw-color-white);
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 11px;
+	line-height: 1.3;
+}
+
+.zdw-bid-liquid-seed-row input[type="text"]:focus {
+	outline: 1px solid var(--zdw-color-blue);
+	border-color: var(--zdw-color-blue);
+}
+
+.zdw-bid-liquid-debug__actions button {
+	appearance: none;
+	padding: 0.3rem 0.55rem;
+	border: 1px solid rgba(235, 235, 235, 0.35);
+	background: transparent;
+	color: var(--zdw-color-white);
+	font: inherit;
+	cursor: pointer;
+}
+
+.zdw-bid-liquid-debug__actions button:disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+}
+
+.zdw-bid-liquid-debug__actions button.is-active {
+	border-color: var(--zdw-color-blue);
+	background: var(--zdw-color-blue);
+	color: var(--zdw-color-dark);
+}
+
+.zdw-bid-liquid-debug__foot {
+	padding-top: 0.45rem;
+	border-top: 1px solid rgba(235, 235, 235, 0.14);
+}
+
+.zdw-bid-liquid-bg-switch button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+
+.zdw-bid-liquid-bg-switch button i {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.45);
+	flex: none;
+}
+
+.zdw-bid-liquid-bg-switch button.is-active i {
+	border-color: rgba(31, 31, 31, 0.45);
+}
+
+/* Liquid color palette editor (adapted from Liquid Studio palette workflow) */
+.zdw-bid-liquid-gradient-bar {
+	position: relative;
+	width: 100%;
+	height: 14px;
+	border: 1px solid rgba(235, 235, 235, 0.3);
+	background-color: #2a2a2a;
+	background-image:
+		linear-gradient(45deg, rgba(255, 255, 255, 0.16) 25%, transparent 25%),
+		linear-gradient(-45deg, rgba(255, 255, 255, 0.16) 25%, transparent 25%),
+		linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.16) 75%),
+		linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.16) 75%);
+	background-size: 8px 8px;
+	background-position: 0 0, 0 4px, 4px -4px, -4px 0;
+	overflow: hidden;
+}
+
+.zdw-bid-liquid-gradient-bar__fill {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(90deg, #9fbaff 0%, #ffffff 100%);
+}
+
+.zdw-bid-liquid-palette-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+}
+
+.zdw-bid-liquid-palette-title {
+	color: var(--zdw-color-dove);
+	opacity: 0.85;
+}
+
+.zdw-bid-liquid-mini-action {
+	appearance: none;
+	padding: 0.2rem 0.45rem;
+	border: 1px solid rgba(235, 235, 235, 0.28);
+	background: rgba(235, 235, 235, 0.06);
+	color: var(--zdw-color-dove);
+	font: inherit;
+	cursor: pointer;
+}
+
+.zdw-bid-liquid-mini-action:hover,
+.zdw-bid-liquid-mini-action:focus-visible {
+	border-color: var(--zdw-color-blue);
+	color: var(--zdw-color-white);
+}
+
+.zdw-bid-liquid-swatches {
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+	gap: 5px;
+}
+
+.zdw-bid-liquid-swatch {
+	appearance: none;
+	height: 20px;
+	padding: 0;
+	border: 1px solid rgba(255, 255, 255, 0.24);
+	cursor: pointer;
+	transition: transform 110ms ease, border-color 110ms ease;
+}
+
+.zdw-bid-liquid-swatch:hover,
+.zdw-bid-liquid-swatch:focus-visible {
+	transform: scale(1.08);
+	border-color: var(--zdw-color-white);
+	z-index: 2;
+}
+
+.zdw-bid-liquid-stops {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.zdw-bid-liquid-stop {
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0.25rem 0.4rem;
+	background: rgba(255, 255, 255, 0.04);
+	border: 1px solid rgba(235, 235, 235, 0.14);
+	cursor: pointer;
+}
+
+.zdw-bid-liquid-stop.is-selected {
+	border-color: var(--zdw-color-blue);
+	background: rgba(159, 186, 255, 0.12);
+}
+
+.zdw-bid-liquid-stop__label {
+	min-width: 1.4rem;
+	color: var(--zdw-color-dove);
+	font-weight: 500;
+}
+
+.zdw-bid-liquid-stop__picker {
+	position: relative;
+	flex: none;
+	width: 20px;
+	height: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.35);
+	background-color: #2a2a2a;
+	background-image:
+		linear-gradient(45deg, rgba(255, 255, 255, 0.18) 25%, transparent 25%),
+		linear-gradient(-45deg, rgba(255, 255, 255, 0.18) 25%, transparent 25%),
+		linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.18) 75%),
+		linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.18) 75%);
+	background-size: 6px 6px;
+	background-position: 0 0, 0 3px, 3px -3px, -3px 0;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.zdw-bid-liquid-stop__preview {
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+.zdw-bid-liquid-stop__picker-input {
+	position: absolute;
+	inset: -4px;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	border: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.zdw-bid-liquid-stop__hex {
+	width: 4.35rem;
+	flex: none;
+	padding: 0.12rem 0.25rem;
+	border: 1px solid rgba(235, 235, 235, 0.2);
+	background: rgba(18, 18, 18, 0.85);
+	color: var(--zdw-color-white);
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 11px;
+	line-height: 1.25;
+}
+
+.zdw-bid-liquid-stop__hex:focus {
+	outline: 1px solid var(--zdw-color-blue);
+	border-color: var(--zdw-color-blue);
+}
+
+.zdw-bid-liquid-stop__alpha {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	flex: 1;
+	min-width: 4.75rem;
+}
+
+.zdw-bid-liquid-stop__alpha input[type="range"] {
+	width: 100%;
+	min-width: 2.5rem;
+	margin: 0;
+	accent-color: var(--zdw-color-blue);
+	cursor: pointer;
+}
+
+.zdw-bid-liquid-stop__alpha output {
+	min-width: 2.2rem;
+	text-align: right;
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 10px;
+	color: var(--zdw-color-dove);
+}
+
+.zdw-bid-liquid-stop__minis {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 3px;
+	flex: none;
+}
+
+.zdw-bid-liquid-mini-swatch {
+	appearance: none;
+	width: 14px;
+	height: 14px;
+	padding: 0;
+	border: 1px solid rgba(0, 0, 0, 0.35);
+	cursor: pointer;
+	transition: transform 100ms ease, border-color 100ms ease;
+}
+
+.zdw-bid-liquid-mini-swatch:hover,
+.zdw-bid-liquid-mini-swatch:focus-visible {
+	transform: scale(1.22);
+	border-color: var(--zdw-color-white);
+	z-index: 2;
+}
+
+/* Subtle bottom-right controls next to Complianz cookies button (Editor + Liquid + Flip sides) */
+.zdw-bid-liquid-controls {
+	position: fixed;
+	right: 1rem;
+	bottom: 0.75rem;
+	z-index: 80;
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.4rem;
+}
+
+.zdw-bid-liquid-toggle {
+	appearance: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.35rem 0.6rem;
+	background: rgba(31, 31, 31, 0.84);
+	border: 1px solid rgba(235, 235, 235, 0.22);
+	color: rgba(235, 235, 235, 0.78);
+	font-family: "Roobert", sans-serif;
+	font-size: var(--zdw-text-caption);
+	font-weight: 400;
+	line-height: 1.2;
+	cursor: pointer;
+	user-select: none;
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.zdw-bid-liquid-toggle:hover,
+.zdw-bid-liquid-toggle:focus-within,
+.zdw-bid-liquid-toggle:focus-visible {
+	border-color: rgba(235, 235, 235, 0.5);
+	color: var(--zdw-color-white);
+}
+
+.zdw-bid-liquid-toggle--editor.is-active {
+	border-color: var(--zdw-color-blue);
+	background: var(--zdw-color-blue);
+	color: var(--zdw-color-dark);
+}
+
+.zdw-bid-liquid-toggle__input {
+	width: 12px;
+	height: 12px;
+	margin: 0;
+	accent-color: var(--zdw-color-blue);
+	cursor: pointer;
+}
+
+body.zdw-bid-liquid-off .zdw-bid-stage::before,
+body.zdw-bid-liquid-off .zdw-bid-journey-page > .wp-block-group__inner-container > p.zdw-statement--sm::before {
+	opacity: 0;
+}
+
+@media (max-width: 860px) {
+	.zdw-bid-liquid-toggle--flip {
+		display: none;
+	}
+}
+
+@media (max-width: 640px) {
+	.zdw-bid-liquid-controls {
+		right: auto;
+		left: 0.75rem;
+		bottom: 0.75rem;
+	}
+}
+
+.zdw-bid-journey-page > .wp-block-group__inner-container > p.zdw-statement--sm {
+	position: relative;
+	isolation: isolate;
+	max-width: 34ch;
+	margin: 0 0 clamp(2.5rem, 5vw, 4.5rem);
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-statement-sm);
+	font-weight: 400;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: 1.12;
+}
+
+.zdw-bid-journey-page > .wp-block-group__inner-container > p.zdw-statement--sm::before {
+	content: "";
+	position: absolute;
+	inset: -1.75rem -2.25rem;
+	z-index: -1;
+	pointer-events: none;
+	background: radial-gradient(
+		ellipse 78% 72% at 44% 50%,
+		rgba(18, 18, 18, 0.82) 0%,
+		rgba(24, 24, 24, 0.62) 45%,
+		rgba(31, 31, 31, 0) 100%
+	);
+	filter: blur(18px);
+}
+
+.zdw-bid-journey {
+	position: relative;
+	border: 0;
+	margin: 0 0 clamp(4rem, 7vw, 6rem);
+	padding: 0;
+}
+
+.zdw-bid-journey > .wp-block-group__inner-container {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	column-gap: clamp(3rem, 7vw, 6.5rem);
+	row-gap: clamp(2.25rem, 4.5vw, 3.75rem);
+	counter-reset: journey-stage;
+}
+
+.zdw-bid-stage {
+	--stage-accent: var(--zdw-color-blue);
+	position: relative;
+	isolation: isolate;
+	counter-increment: journey-stage;
+	padding: 0;
+	text-align: left;
+}
+
+/* When AE liquid is turned off, give each milestone its own ZDW 2027 palette accent */
+body.zdw-bid-liquid-off .zdw-bid-stage:nth-child(1) { --stage-accent: var(--zdw-color-blue); }
+body.zdw-bid-liquid-off .zdw-bid-stage:nth-child(2) { --stage-accent: var(--zdw-color-yellow); }
+body.zdw-bid-liquid-off .zdw-bid-stage:nth-child(3) { --stage-accent: #fb8656; }
+body.zdw-bid-liquid-off .zdw-bid-stage:nth-child(4) { --stage-accent: var(--zdw-color-coral); }
+body.zdw-bid-liquid-off .zdw-bid-stage:nth-child(5) { --stage-accent: var(--zdw-color-magenta); }
+body.zdw-bid-liquid-off .zdw-bid-stage:nth-child(6) { --stage-accent: var(--zdw-color-dove); }
+
+.zdw-bid-stage > .wp-block-group__inner-container {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.9rem;
+}
+
+/* Soft organic dark shadow beneath each milestone so text stays readable over bright liquid */
+.zdw-bid-stage::before {
+	content: "";
+	position: absolute;
+	inset: -2.25rem -2.75rem -2.5rem -2.5rem;
+	z-index: 0;
+	pointer-events: none;
+	background: radial-gradient(
+		ellipse 78% 72% at 44% 52%,
+		rgba(18, 18, 18, 0.86) 0%,
+		rgba(24, 24, 24, 0.72) 44%,
+		rgba(31, 31, 31, 0.34) 74%,
+		rgba(31, 31, 31, 0) 100%
+	);
+	filter: blur(18px);
+}
+
+.zdw-bid-stage::after {
+	content: none;
+	display: none;
+}
+
+/* Explicit alternating chronological steps on desktop only: odd RIGHT column, even LEFT column */
+@media (min-width: 861px) {
+	.zdw-bid-stage:nth-child(1) { grid-column: 2; grid-row: 1; }
+	.zdw-bid-stage:nth-child(2) { grid-column: 1; grid-row: 2; }
+	.zdw-bid-stage:nth-child(3) { grid-column: 2; grid-row: 3; }
+	.zdw-bid-stage:nth-child(4) { grid-column: 1; grid-row: 4; }
+	.zdw-bid-stage:nth-child(5) { grid-column: 2; grid-row: 5; }
+	.zdw-bid-stage:nth-child(6) { grid-column: 1; grid-row: 6; }
+
+	body.zdw-bid-journey-flip .zdw-bid-stage:nth-child(1) { grid-column: 1; }
+	body.zdw-bid-journey-flip .zdw-bid-stage:nth-child(2) { grid-column: 2; }
+	body.zdw-bid-journey-flip .zdw-bid-stage:nth-child(3) { grid-column: 1; }
+	body.zdw-bid-journey-flip .zdw-bid-stage:nth-child(4) { grid-column: 2; }
+	body.zdw-bid-journey-flip .zdw-bid-stage:nth-child(5) { grid-column: 1; }
+	body.zdw-bid-journey-flip .zdw-bid-stage:nth-child(6) { grid-column: 2; }
+}
+
+.zdw-bid-stage .zdw-bid-stage-date {
+	order: -1;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.9rem;
+	margin: 0;
+}
+
+.zdw-bid-stage .zdw-bid-stage-date::before {
+	content: counter(journey-stage, decimal-leading-zero);
+	color: var(--stage-accent, var(--zdw-color-blue));
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: -0.05em;
+	line-height: 0.78;
+	transition: color 320ms ease;
+}
+
+.zdw-bid-stage .zdw-bid-stage-meta {
+	display: flex;
+	flex-direction: column;
+	gap: 0.15rem;
+	font-size: var(--zdw-text-caption);
+	letter-spacing: 0.04em;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.zdw-bid-stage .zdw-bid-stage-meta strong {
+	color: var(--stage-accent, var(--zdw-color-blue));
+	font-weight: 500;
+	transition: color 320ms ease;
+}
+
+.zdw-bid-stage .zdw-bid-stage-meta span {
+	color: var(--zdw-color-dove);
+	font-weight: 400;
+}
+
+.zdw-bid-stage h2 {
+	margin: 0;
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: -0.05em;
+	line-height: var(--zdw-leading-step);
+	text-transform: uppercase;
+	text-align: left;
+}
+
+.zdw-bid-stage h2 .zdw-step {
+	line-height: 1.08;
+	text-align: left;
+}
+
+.zdw-bid-stage p:not(.zdw-bid-stage-date) {
+	margin: 0.25rem 0 0;
+	max-width: 50ch;
+	color: var(--zdw-color-dove);
+	font-size: var(--zdw-text-body);
+	line-height: var(--zdw-leading-body);
+	text-align: left;
+	text-wrap: pretty;
+}
+
+@media (max-width: 860px) {
+	.zdw-bid-journey-page > .wp-block-group__inner-container > p.zdw-statement--sm {
+		margin-bottom: 2.25rem;
+	}
+
+	.zdw-bid-journey {
+		margin-bottom: 3rem;
+	}
+
+	.zdw-bid-journey > .wp-block-group__inner-container {
+		grid-template-columns: minmax(0, 1fr);
+		column-gap: 0;
+		row-gap: 2.25rem;
+	}
+
+	.zdw-bid-stage {
+		grid-column: 1;
+		grid-row: auto;
+	}
+
+	.zdw-bid-stage::before {
+		inset: -1.5rem -1.25rem;
+		filter: blur(14px);
+	}
+
+	.zdw-bid-stage + .zdw-bid-stage {
+		padding-top: 2rem;
+		border-top: 1px solid rgba(235, 235, 235, 0.14);
+	}
+
+	.zdw-bid-stage > .wp-block-group__inner-container {
+		gap: 0.7rem;
+	}
+
+	.zdw-bid-stage .zdw-bid-stage-date::before {
+		font-size: clamp(26px, 7.5vw, 38px);
+	}
+
+	.zdw-bid-stage h2 {
+		max-width: 100%;
+		overflow-wrap: break-word;
+	}
+
+	.zdw-bid-rules-summary {
+		margin-block: 2.5rem 2rem;
+		padding: 1.5rem 1.25rem;
+	}
+}
+
+@media (max-width: 540px) {
+	.zdw-bid-stage h2 .zdw-step--right .zdw-step__line:nth-child(2),
+	.zdw-bid-stage h2 .zdw-step--left .zdw-step__line:nth-child(1) {
+		margin-inline-start: 0.25em;
+	}
+
+	.zdw-bid-rules-summary .wp-block-button__link,
+	.zdw-bid-journey-page > .wp-block-group__inner-container > .wp-block-buttons .wp-block-button__link {
+		width: 100%;
+	}
+
+	.zdw-bid-liquid-debug {
+		right: 0.75rem;
+		left: 0.75rem;
+		bottom: 3.25rem;
+		width: auto;
+		max-width: none;
+	}
+}
+
+/* Registration Form */
+.zdw-bid-registration fieldset {
+	border: 0;
+	border-top: 1px solid rgba(235, 235, 235, 0.25);
+	margin: 2rem 0;
+	min-width: 0;
+	padding: 1rem 0 0;
+}
+
+.zdw-bid-registration legend {
+	font-weight: 500;
+	font-size: var(--zdw-text-h3);
+	letter-spacing: var(--zdw-tracking-regular);
+	padding-inline-end: 0.75rem;
+}
+
+.zdw-bid-registration .zdw-bid-fields {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem 1.5rem;
+}
+
+.zdw-bid-registration label {
+	display: block;
+	font-size: var(--zdw-text-body);
+	font-weight: 500;
+}
+
+.zdw-bid-registration :is(input:not([type="checkbox"]), select, textarea) {
+	box-sizing: border-box;
+	border: 1px solid rgba(235, 235, 235, 0.45);
+	background: var(--zdw-color-dark);
+	color: var(--zdw-color-white);
+	font: inherit;
+	font-weight: 400;
+	margin-top: 0.35rem;
+	min-height: 2.75rem;
+	padding: 0.55rem 0.75rem;
+	width: 100%;
+}
+
+.zdw-bid-registration [hidden] {
+	display: none !important;
+}
+
+.zdw-bid-registration .zdw-bid-conditional {
+	margin-block: 1rem;
+}
+
+.zdw-bid-registration .zdw-bid-error {
+	border: 2px solid var(--zdw-color-blue);
+	padding: 1rem;
+}
+
+@media (max-width: 650px) {
+	.zdw-bid-registration .zdw-bid-fields {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body.zdw-bid-journey-liquid,
+	.zdw-bid-liquid-bg,
+	.zdw-bid-jury .person-item img,
+	.zdw-finalist-showcase__media img,
+	.zdw-bid-faq summary::after {
+		transition: none;
+	}
+}

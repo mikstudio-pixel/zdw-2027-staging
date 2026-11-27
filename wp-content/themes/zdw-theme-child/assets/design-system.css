@@ -1,0 +1,823 @@
+/*
+ * Zlin Design Week 2027 — Figma-Faithful Design System & Typography
+ *
+ * Source of truth: Figma "Zlin Design Week 2027"
+ *   - MANUAL ZLIN DESIGN WEEK 2027 (Frame 1324: Loga a textová loga 2027)
+ *   - TYPOGRAFIE / ČTYŘI VZDÁLENOSTI (Golden ratio 1.618, web base 16 px)
+ *   - BiD_CZ (BEST IN / DESIGN / 2027 composition, editorial hierarchy)
+ *   - LOGA / Organizátor (protective zones)
+ *
+ * Scale (golden ratio 1.618): 178 / 110 / 68 / 42 / 26 / 16 / 12 px
+ *   (178 px single-use hero step for homepage ZLIN / DESIGN / WEEK wordmark)
+ * Weights: Headings Roobert Medium (500), body text Roobert Regular (400) — NO Heavy (900)
+ * Tracking: -4% (-0.04em) Regular, -6% (-0.06em) Medium
+ * Palette:
+ *   Ne-černá #1F1F1F · Holu-bičí šeď #EBEBEB · Nebesky modrá #9FBAFF
+ *   Slunečnicově žlutá #F8CF49 · Tmavě zelená #16533F
+ *   Malinově červená #FD3D62 · Růžová #FFA9EF · Hnědá #5C300F
+ *
+ * Explicitly leaves Design KANTÝNA (<main class="zdw-kantyna">) untouched.
+ */
+
+:root {
+	/* Exact Figma Variables */
+	--zdw-color-dark: #1f1f1f;
+	--zdw-color-surface-dark: #282828;
+	--zdw-color-dove: #ebebeb;
+	--zdw-color-dove-light: #ebebeb;
+	--zdw-color-paper: #f5f5f5;
+	--zdw-color-white: #ffffff;
+	--zdw-color-blue: #9fbaff;
+	--zdw-color-yellow: #f8cf49;
+	--zdw-color-green: #16533f;
+	--zdw-color-coral: #fd3d62;
+	--zdw-color-magenta: #ffa9ef;
+	--zdw-color-brown: #5c300f;
+
+	/* Align legacy parent theme tokens to exact Figma Ne-černá / Holu-bičí šeď / Nebesky modrá */
+	--bg: #1f1f1f;
+	--dark: #ebebeb;
+	--light: #9fbaff;
+	--zdw: #9fbaff;
+
+	/* Golden-ratio typographic scale (1.618, web base 16px) */
+	--zdw-text-hero: clamp(56px, min(12.4vw, 22vh), 178px);
+	--zdw-text-display: clamp(46px, 7.6vw, 110px);
+	--zdw-text-h1: clamp(32px, 4.8vw, 68px);
+	--zdw-text-statement: clamp(30px, 4.6vw, 68px);
+	--zdw-text-h2: clamp(26px, 3vw, 42px);
+	--zdw-text-statement-sm: clamp(24px, 3vw, 42px);
+	--zdw-text-h3: clamp(20px, 1.9vw, 26px);
+	--zdw-text-body: 16px;
+	--zdw-text-caption: 12px;
+
+	--zdw-tracking-regular: -0.04em;
+	--zdw-tracking-medium: -0.06em;
+	--zdw-tracking-display: -0.055em;
+	--zdw-tracking-statement: -0.04em;
+	--zdw-tracking-body: -0.02em;
+
+	--zdw-leading-display: 0.86;
+	--zdw-leading-step: 1.06;
+	--zdw-leading-h1: 1.04;
+	--zdw-leading-statement: 1.05;
+	--zdw-leading-h2: 1.10;
+	--zdw-leading-h3: 1.24;
+	--zdw-leading-body: 1.52;
+	--zdw-leading-meta: 1.40;
+}
+
+/* ==========================================================================
+   1. Remove legacy text glow & smoke/filter artifacts site-wide
+   ========================================================================== */
+
+.text-glow,
+.text-glow-lg {
+	text-shadow: none !important;
+}
+
+.wp-block-zdw-intro-effect .zdw-filters,
+.wp-block-zdw-intro-effect .ie-layer,
+.wp-block-zdw-intro-effect canvas {
+	display: none !important;
+}
+
+html:not(:has(main.zdw-kantyna)),
+body:not(:has(main.zdw-kantyna)) {
+	font-size: 16px;
+	font-weight: 400;
+}
+
+body:not(:has(main.zdw-kantyna)) {
+	background-color: var(--zdw-color-dark);
+	color: var(--zdw-color-dove);
+}
+
+/* ==========================================================================
+   2. Unified Typography Scale (excluding Design KANTÝNA)
+      - All headings (hero, h1–h6, stepped titles, statement): Roobert Medium (500)
+      - Body / running copy / lists / captions: Roobert Regular (400)
+   ========================================================================== */
+
+:where(main:not(.zdw-kantyna)) {
+	font-family: "Roobert", sans-serif;
+	font-size: var(--zdw-text-body);
+	font-weight: 400;
+	letter-spacing: var(--zdw-tracking-body);
+	line-height: var(--zdw-leading-body);
+}
+
+:where(main:not(.zdw-kantyna)) h1,
+:where(main:not(.zdw-kantyna)) h2,
+:where(main:not(.zdw-kantyna)) h3,
+:where(main:not(.zdw-kantyna)) h4,
+:where(main:not(.zdw-kantyna)) h5,
+:where(main:not(.zdw-kantyna)) h6,
+:where(main:not(.zdw-kantyna)) .h1,
+:where(main:not(.zdw-kantyna)) .h2,
+:where(main:not(.zdw-kantyna)) .h3,
+:where(main:not(.zdw-kantyna)) .h4,
+:where(main:not(.zdw-kantyna)) .h5,
+:where(main:not(.zdw-kantyna)) .h6,
+:where(main:not(.zdw-kantyna)) .is-style-h1,
+:where(main:not(.zdw-kantyna)) .is-style-h2,
+:where(main:not(.zdw-kantyna)) .is-style-h3,
+:where(main:not(.zdw-kantyna)) .is-style-h4 {
+	font-family: "Roobert", sans-serif;
+	font-weight: 500;
+	text-transform: none;
+}
+
+:where(main:not(.zdw-kantyna)) h1,
+:where(main:not(.zdw-kantyna)) .h1,
+:where(main:not(.zdw-kantyna)) .is-style-h1 {
+	font-size: var(--zdw-text-h1);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h1);
+}
+
+:where(main:not(.zdw-kantyna)) h2,
+:where(main:not(.zdw-kantyna)) .h2,
+:where(main:not(.zdw-kantyna)) .is-style-h2 {
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h2);
+}
+
+:where(main:not(.zdw-kantyna)) h3,
+:where(main:not(.zdw-kantyna)) .h3,
+:where(main:not(.zdw-kantyna)) .is-style-h3,
+:where(main:not(.zdw-kantyna)) h4,
+:where(main:not(.zdw-kantyna)) .h4,
+:where(main:not(.zdw-kantyna)) .is-style-h4 {
+	font-size: var(--zdw-text-h3);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h3);
+}
+
+:where(main:not(.zdw-kantyna)) h5,
+:where(main:not(.zdw-kantyna)) .h5,
+:where(main:not(.zdw-kantyna)) .is-style-h5,
+:where(main:not(.zdw-kantyna)) h6,
+:where(main:not(.zdw-kantyna)) .h6,
+:where(main:not(.zdw-kantyna)) .is-style-h6 {
+	font-size: var(--zdw-text-body);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-body);
+	line-height: 1.3;
+}
+
+/* Override parent page/archive/blog/press <h1 class="... h2"> so page titles use Figma H1 */
+main:not(.zdw-kantyna) :is(h1.page-title, h1.h2, h1.zdw-press__title) {
+	font-size: var(--zdw-text-h1);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h1);
+	text-transform: uppercase;
+}
+
+:where(main:not(.zdw-kantyna)) p,
+:where(main:not(.zdw-kantyna)) .wp-block-list,
+:where(main:not(.zdw-kantyna)) :where(.article-content, .image-box__text) > :where(ul, ol) {
+	font-size: var(--zdw-text-body);
+	font-weight: 400;
+	letter-spacing: var(--zdw-tracking-body);
+	line-height: var(--zdw-leading-body);
+}
+
+:where(main:not(.zdw-kantyna)) .large {
+	font-size: var(--zdw-text-h3);
+	font-weight: 400;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h3);
+}
+
+:where(main:not(.zdw-kantyna)) strong,
+:where(main:not(.zdw-kantyna)) b,
+:where(main:not(.zdw-kantyna)) .strong,
+:where(main:not(.zdw-kantyna)) .stronger,
+main:not(.zdw-kantyna) .intro-effect h2.wp-block-heading {
+	font-weight: 500;
+}
+
+:where(main:not(.zdw-kantyna)) small,
+:where(main:not(.zdw-kantyna)) .caption {
+	font-size: var(--zdw-text-caption);
+	font-weight: 400;
+	letter-spacing: 0.01em;
+	line-height: var(--zdw-leading-meta);
+}
+
+/* ==========================================================================
+   3. Figma Signature Stepped / Offset Headline Compositions (Frame 1324)
+      - .zdw-step--drop:  "DESIGN" + dropped "LAB" / "SWAP" (baseline shift)
+      - .zdw-step--right: Line 1 flush left, Line 2 stepped right ("GRAND / OPENING")
+      - .zdw-step--left:  Line 1 stepped right, Line 2 flush left ("FLASH / TALKS", "DESIGN / MARKET")
+   ========================================================================== */
+
+main:not(.zdw-kantyna) .zdw-step {
+	display: inline-block;
+	font-family: "Roobert", sans-serif;
+	font-weight: 500;
+	letter-spacing: -0.05em;
+	line-height: var(--zdw-leading-step);
+	text-transform: uppercase;
+}
+
+main:not(.zdw-kantyna) .zdw-step__line {
+	display: block;
+}
+
+/* Pattern A: Horizontal baseline drop ("DESIGN" ↓"LAB", "SOUTĚŽNÍ" ↓"KATEGORIE") */
+main:not(.zdw-kantyna) .zdw-step--drop {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	column-gap: 0.14em;
+	row-gap: 0.08em;
+	padding-bottom: 0.28em;
+}
+
+main:not(.zdw-kantyna) .zdw-step--drop .zdw-step__drop {
+	display: inline-block;
+	transform: translateY(0.28em);
+}
+
+/* Pattern B: 2-line step right ("GRAND" / "  OPENING", "FESTIVAL" / "   SPOT") */
+main:not(.zdw-kantyna) .zdw-step--right .zdw-step__line:nth-child(2) {
+	margin-inline-start: 0.72em;
+}
+
+/* Pattern C: 2-line step left ("   FLASH" / "TALKS", "   DESIGN" / "MARKET") */
+main:not(.zdw-kantyna) .zdw-step--left .zdw-step__line:nth-child(1) {
+	margin-inline-start: 0.68em;
+}
+
+/* Pattern D: 3-line diagonal cascade ("PRODUCT &" / "  INDUSTRIAL" / "     DESIGN") */
+main:not(.zdw-kantyna) .zdw-step--cascade .zdw-step__line:nth-child(2) {
+	margin-inline-start: 0.55em;
+}
+
+main:not(.zdw-kantyna) .zdw-step--cascade .zdw-step__line:nth-child(3) {
+	margin-inline-start: 1.45em;
+}
+
+@media (max-width: 640px) {
+	main:not(.zdw-kantyna) .zdw-step--right .zdw-step__line:nth-child(2) {
+		margin-inline-start: 0.42em;
+	}
+
+	main:not(.zdw-kantyna) .zdw-step--left .zdw-step__line:nth-child(1) {
+		margin-inline-start: 0.42em;
+	}
+
+	main:not(.zdw-kantyna) .zdw-step--cascade .zdw-step__line:nth-child(2) {
+		margin-inline-start: 0.35em;
+	}
+
+	main:not(.zdw-kantyna) .zdw-step--cascade .zdw-step__line:nth-child(3) {
+		margin-inline-start: 0.9em;
+	}
+
+	main:not(.zdw-kantyna) .zdw-step--drop .zdw-step__drop {
+		transform: translateY(0.2em);
+	}
+}
+
+/* Reusable Statement editorial copy (68px / 42px) */
+main:not(.zdw-kantyna) :is(.zdw-statement, .is-style-zdw-statement) {
+	max-width: 1400px;
+	margin: 0;
+	font-size: var(--zdw-text-statement);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-statement);
+	line-height: var(--zdw-leading-statement);
+	text-wrap: pretty;
+}
+
+main:not(.zdw-kantyna) :is(.zdw-statement--sm, .is-style-zdw-statement-sm) {
+	max-width: 34ch;
+	margin: 0;
+	font-size: var(--zdw-text-statement-sm);
+	font-weight: 400;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h2);
+	text-wrap: pretty;
+}
+
+/* Unified Gutenberg buttons */
+main:not(.zdw-kantyna) .wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.9rem 1.75rem;
+	border-radius: 0;
+	font-family: "Roobert", sans-serif;
+	font-size: var(--zdw-text-body);
+	font-weight: 500;
+	letter-spacing: -0.02em;
+	line-height: 1.2;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: var(--zdw-color-blue);
+	color: var(--zdw-color-dark) !important;
+	transition: background-color 160ms ease, color 160ms ease;
+}
+
+main:not(.zdw-kantyna) .wp-block-button__link:hover,
+main:not(.zdw-kantyna) .wp-block-button__link:focus-visible {
+	background: var(--zdw-color-white);
+	color: var(--zdw-color-dark) !important;
+}
+
+main:not(.zdw-kantyna) .wp-block-button__link:focus-visible {
+	outline: 2px solid var(--zdw-color-blue);
+	outline-offset: 3px;
+}
+
+/* ==========================================================================
+   4. Header & Footer Typography Unification
+   ========================================================================== */
+
+.zdw-two-tier__notice {
+	font-size: var(--zdw-text-caption);
+	font-weight: 500;
+	letter-spacing: 0.02em;
+}
+
+.zdw-two-tier__menu a,
+.zdw-two-tier__language,
+.zdw-two-tier__menu--bottom > li > a {
+	font-size: var(--zdw-text-body);
+	font-weight: 500;
+	letter-spacing: -0.02em;
+}
+
+.zdw-two-tier__menu .sub-menu a,
+.zdw-two-tier__mobile-panel .sub-menu a,
+.zdw-two-tier__trigger-icon {
+	font-size: var(--zdw-text-body);
+	font-weight: 400;
+	letter-spacing: -0.02em;
+}
+
+.footer.footer .footer-connect {
+	background-color: var(--zdw-color-dove) !important;
+	color: var(--zdw-color-dark);
+}
+
+.footer.footer .footer-connect__title,
+.footer.footer .footer-connect .zdw-press__invitation h2 {
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: 1.06;
+}
+
+.footer.footer .footer-connect__contact,
+.footer.footer .footer-connect .zdw-press__invitation p {
+	font-size: var(--zdw-text-body);
+	font-weight: 400;
+	letter-spacing: var(--zdw-tracking-body);
+	line-height: var(--zdw-leading-body);
+}
+
+.footer.footer .footer-connect__contact strong,
+.footer.footer .footer-connect .zdw-press__person h3 {
+	font-weight: 500;
+}
+
+.footer.footer .footer-legal__support,
+.footer.footer .footer-legal__about,
+.footer.footer .footer-legal__meta {
+	font-size: var(--zdw-text-caption);
+	line-height: var(--zdw-leading-meta);
+}
+
+/* ==========================================================================
+   5. Unified Full-Viewport Hero (Homepage + Best in Design)
+      - Homepage (1): Frame 1324 Column 3 diagonal cascade ZLIN / DESIGN / WEEK
+      - Best in Design (2): BiD_CZ zig-zag BEST IN / DESIGN / 2027
+   ========================================================================== */
+
+:is(body.home, body.page-id-193, body.page-id-995) {
+	--zdw-home-content-edge: calc(6px + clamp(2rem, 5vw, 6rem));
+}
+
+:is(body.home, body.page-id-193, body.page-id-995) .zdw-two-tier__inner,
+:is(body.home, body.page-id-193, body.page-id-995) footer.footer .container {
+	width: auto;
+	max-width: none;
+	margin-inline: var(--zdw-home-content-edge);
+	padding-inline: 0;
+}
+
+:is(body.home, body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect.intro-effect {
+	position: relative;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	min-height: 100vh;
+	min-height: 100svh;
+	min-height: 100dvh;
+	padding: clamp(10rem, 18vh, 14rem) 0 clamp(3rem, 6vh, 5.5rem);
+	isolation: isolate;
+}
+
+:is(body.home, body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-inner {
+	position: relative;
+	z-index: 10;
+	mix-blend-mode: normal !important;
+	color: var(--zdw-color-white);
+}
+
+:is(body.home, body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-inner > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin-inline: var(--zdw-home-content-edge);
+	padding-inline: 0;
+}
+
+/* Wordmark lines: Roobert Medium 500, uppercase, tight leading & tracking */
+:is(body.home, body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading {
+	margin: 0;
+	color: var(--zdw-color-white) !important;
+	mix-blend-mode: normal !important;
+	font-family: "Roobert", sans-serif;
+	font-size: var(--zdw-text-display);
+	font-weight: 500 !important;
+	letter-spacing: var(--zdw-tracking-display);
+	line-height: var(--zdw-leading-display);
+	text-transform: uppercase;
+	text-shadow: none !important;
+}
+
+/* Homepage (1) — single-use hero scale step (178px = 110 × 1.618) and
+   exact Frame 1324 Column 3 proportions: ZLIN (0) / DESIGN (+0.38em) / WEEK (+1.12em) */
+body.home .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading {
+	font-size: var(--zdw-text-hero);
+}
+
+body.home .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(1) {
+	margin-inline-start: 0;
+}
+
+body.home .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(2) {
+	margin-inline-start: 0.38em;
+}
+
+body.home .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(3) {
+	margin-inline-start: 1.12em;
+}
+
+/* Right-aligned date / edition meta */
+:is(body.home, body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-side {
+	position: relative;
+	z-index: 10;
+	width: auto;
+	max-width: none;
+	margin-top: 2rem;
+	margin-inline: var(--zdw-home-content-edge);
+	text-align: right;
+	color: var(--zdw-color-white);
+}
+
+:is(body.home, body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-side > .wp-block-group__inner-container {
+	width: auto;
+	max-width: none;
+	margin: 0;
+	padding-inline: 0;
+}
+
+:is(body.home, body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect .zdw-intro-effect-side h3.wp-block-heading {
+	margin: 0;
+	color: var(--zdw-color-white);
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: 1.06;
+	text-align: right;
+	text-transform: none;
+	text-shadow: none !important;
+}
+
+@media (min-width: 1000px) {
+	:is(body.home, body.page-id-193, body.page-id-995) .wp-block-zdw-intro-effect.intro-effect .zdw-intro-effect-side {
+		position: absolute;
+		right: var(--zdw-home-content-edge);
+		bottom: clamp(3rem, 6vh, 5.5rem);
+		left: auto;
+		margin: 0;
+		width: min(460px, 42vw);
+	}
+}
+
+@media (max-width: 767.98px) {
+	:is(body.home, body.page-id-193, body.page-id-995) {
+		--zdw-home-content-edge: calc(4px + 1.25rem);
+	}
+
+	body.home .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(2) {
+		margin-inline-start: 0.30em;
+	}
+
+	body.home .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(3) {
+		margin-inline-start: 0.85em;
+	}
+}
+
+/* ==========================================================================
+   6. Homepage Showcase — Statement & Frame 1324 Stepped Tile Titles
+   ========================================================================== */
+
+.zdw-showcase {
+	background: var(--zdw-color-dove);
+}
+
+.zdw-showcase__intro {
+	background: var(--zdw-color-dark);
+	color: var(--zdw-color-dove);
+}
+
+main:not(.zdw-kantyna) .zdw-showcase__intro p {
+	max-width: 1400px;
+	margin: 0;
+	font-size: var(--zdw-text-statement);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-statement);
+	line-height: var(--zdw-leading-statement);
+}
+
+.zdw-showcase__item-title {
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: -0.05em;
+	line-height: var(--zdw-leading-step);
+	text-transform: uppercase;
+}
+
+.zdw-showcase__item-title .zdw-step {
+	display: block;
+}
+
+/* ==========================================================================
+   7. Shared Content Blocks (Festival, Press, Contacts, Image Boxes, Archive)
+   ========================================================================== */
+
+main:not(.zdw-kantyna) .image-box__text {
+	padding: 1.75rem 0;
+}
+
+main:not(.zdw-kantyna) .image-box__text h4 {
+	margin: 0 0 0.75rem;
+	font-size: var(--zdw-text-h3);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h3);
+}
+
+main:not(.zdw-kantyna) .image-box__text p {
+	max-width: 60ch;
+	margin: 0;
+	padding-inline-start: clamp(0rem, 1.5vw, 1.25rem);
+	font-size: var(--zdw-text-body);
+	line-height: var(--zdw-leading-body);
+}
+
+/* Press page typography alignment */
+.zdw-press .zdw-press__title {
+	font-size: var(--zdw-text-h1);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h1);
+	text-transform: uppercase;
+}
+
+.zdw-press h2,
+.zdw-press summary {
+	font-size: var(--zdw-text-h2);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h2);
+}
+
+.zdw-press .zdw-press__lead,
+.zdw-press .zdw-press__center p {
+	font-size: var(--zdw-text-body);
+	line-height: var(--zdw-leading-body);
+}
+
+.zdw-press__releases h3 {
+	font-size: var(--zdw-text-h3);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+}
+
+/* Contacts block typography alignment */
+.wp-block-zdw-contacts.zdw-contacts {
+	--zdw-contacts-text: var(--zdw-color-dove);
+	--zdw-contacts-muted: rgba(235, 235, 235, 0.72);
+	--zdw-contacts-accent: var(--zdw-color-blue);
+	--zdw-contacts-text-large: var(--zdw-text-h3);
+	--zdw-contacts-text-small: var(--zdw-text-body);
+}
+
+.zdw-contacts__section-title {
+	font-size: var(--zdw-text-caption);
+	letter-spacing: 0.04em;
+}
+
+.zdw-contacts__name {
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h3);
+}
+
+.zdw-contacts__role {
+	font-size: var(--zdw-text-caption);
+	line-height: var(--zdw-leading-meta);
+}
+
+/* Open Call page heading alignment with Figma scale */
+.zdw-oc__headline h1 {
+	font-size: var(--zdw-text-display);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-display);
+	line-height: 0.92;
+}
+
+.zdw-oc__card h3 {
+	font-size: var(--zdw-text-h3);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: 1.24;
+}
+
+/* Past BiD years archive typography & clean cards */
+.past-bid-year {
+	background: var(--zdw-color-surface-dark);
+	margin-bottom: 1rem;
+}
+
+.past-bid-year__content h4 {
+	font-size: var(--zdw-text-h3);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+}
+
+.past-bid-year__perex {
+	font-size: var(--zdw-text-body);
+	line-height: var(--zdw-leading-body);
+	max-width: 65ch;
+}
+
+.past-bid-year__read-more {
+	font-size: var(--zdw-text-body);
+	font-weight: 500;
+}
+
+/* Blog pagination & legacy reference blocks — keep strictly on golden-ratio scale */
+main:not(.zdw-kantyna) .pagination :is(a, span) {
+	font-size: var(--zdw-text-body);
+	line-height: 1.4;
+}
+
+main:not(.zdw-kantyna) :is(.reference-large__content p, .reference-item p) {
+	font-size: var(--zdw-text-body);
+	line-height: var(--zdw-leading-body);
+}
+
+/* Carousel Block (Swiper) navigation contrast on dark surfaces */
+main:not(.zdw-kantyna) .wp-block-cb-carousel-v2 {
+	--wp--custom--carousel-block--navigation-color: var(--zdw-color-dove);
+	--wp--custom--carousel-block--navigation-hover-color: var(--zdw-color-blue);
+	--wp--custom--carousel-block--navigation-alignfull-color: var(--zdw-color-white);
+	--wp--custom--carousel-block--pagination-bullet-inactive-color: var(--zdw-color-dove);
+	--wp--custom--carousel-block--pagination-bullet-active-color: var(--zdw-color-blue);
+}
+
+/* ==========================================================================
+   9. Global Mobile Responsiveness Safeguards (excluding Design KANTÝNA)
+   ========================================================================== */
+
+main:not(.zdw-kantyna) :is(h1, h2, h3, .zdw-statement, .zdw-statement--sm) {
+	overflow-wrap: break-word;
+}
+
+.footer.footer .footer-connect__contact a {
+	overflow-wrap: anywhere;
+}
+
+@media (max-width: 767.98px) {
+	main:not(.zdw-kantyna) .image-box__text p {
+		padding-inline-start: 0;
+	}
+
+	/* Keep Swiper slider arrows inside viewport bounds with high-contrast tap target on phones */
+	main:not(.zdw-kantyna) .wp-block-cb-carousel-v2 .cb-button-prev,
+	main:not(.zdw-kantyna) .wp-block-cb-carousel-v2 .cb-button-next {
+		width: 38px;
+		height: 38px;
+		margin-top: -19px;
+		background: rgba(31, 31, 31, 0.72);
+		color: var(--zdw-color-white);
+	}
+
+	main:not(.zdw-kantyna) .wp-block-cb-carousel-v2 .cb-button-prev {
+		left: 8px;
+	}
+
+	main:not(.zdw-kantyna) .wp-block-cb-carousel-v2 .cb-button-next {
+		right: 8px;
+	}
+
+	.footer.footer .footer-connect {
+		padding-block: clamp(3.5rem, 10vw, 5.5rem);
+	}
+
+	.footer.footer .footer-connect__title,
+	.footer.footer .footer-connect .zdw-press__invitation h2 {
+		margin-bottom: 1.5rem;
+	}
+}
+
+@media (max-width: 640px) {
+	/* Prevent top announcement bar clipping on narrow phones */
+	.zdw-two-tier__notice {
+		height: auto;
+		min-height: var(--zdw-tier-notice-height);
+		line-height: 1.25;
+	}
+
+	.zdw-two-tier__notice a {
+		padding: 6px 12px;
+		flex-wrap: wrap;
+	}
+
+	/* Past editions & BiD archive mobile stacking */
+	main:not(.zdw-kantyna) .past-year__col {
+		display: block;
+		width: 100%;
+		margin-bottom: 1rem;
+	}
+
+	main:not(.zdw-kantyna) .specialni-oceneni-col {
+		min-width: 0;
+		flex-basis: 100%;
+	}
+
+	.zdw-press > .container {
+		padding-block: 7.5rem 3rem;
+	}
+
+	.zdw-press__releases > summary::after {
+		margin-right: 0.4rem;
+	}
+}
+
+@media (max-width: 400px) {
+	body.home .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(2) {
+		margin-inline-start: 0.22em;
+	}
+
+	body.home .wp-block-zdw-intro-effect .zdw-intro-effect-inner h2.wp-block-heading:nth-of-type(3) {
+		margin-inline-start: 0.65em;
+	}
+}
+
+/* ==========================================================================
+   8. Partners / Sponsors — Figma LOGA / Organizátor Protective Zones
+   ========================================================================== */
+
+.zdw-sponsors__title {
+	margin: 0 0 max(var(--zdw-sponsors-title-gap, 12px), 32px);
+	font-size: var(--zdw-text-h3);
+	font-weight: 500;
+	letter-spacing: var(--zdw-tracking-regular);
+	line-height: var(--zdw-leading-h3);
+}
+
+.zdw-sponsors__section--poradatele .zdw-sponsors__title {
+	margin-bottom: clamp(36px, 4.5vw, 56px);
+}
+
+.zdw-sponsors__section--poradatele .zdw-sponsors__logos {
+	column-gap: clamp(48px, 7vw, 108px);
+	row-gap: 36px;
+}
+
+.zdw-sponsors__section--poradatele .zdw-sponsors__logo {
+	max-width: min(300px, calc(50% - 24px));
+}
+
+@media (max-width: 767.98px) {
+	.zdw-sponsors__section--poradatele .zdw-sponsors__logos {
+		column-gap: 36px;
+		row-gap: 28px;
+	}
+}
